@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Kimitisik</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Contact Specific Styles -->
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="assets/mainlogo.png" alt="Kimitisik Logo">
+      </a>
+
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li class="dropdown">
+            <span class="nav-item dropdown-toggle">Solutions ▾</span>
+            <ul class="dropdown-menu">
+              <li><a href="solutions-universities.html">For Universities</a></li>
+              <li><a href="solutions-business.html">For Business</a></li>
+              <li><a href="solutions-public.html">Public Sector</a></li>
+            </ul>
+          </li>
+           <li><a href="events.html" class="nav-item">Events</a></li>
+          <li><a href="about.html" class="nav-item">About Us</a></li>
+          <li><a href="contact.html" class="nav-item active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contact.html" class="btn btn-primary-header">Book Discovery Call</a>
+        <div class="hamburger">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="contact-hero">
+    <div class="container hero-text-center">
+      <span class="badge-pill">Let's Connect</span>
+      <h1>Start Your <span class="text-gradient">Impact Journey</span></h1>
+      <p>Whether you need to upskill faculty, solve an R&D challenge, or build an innovation hub, we are ready to listen.</p>
+    </div>
+  </section>
+
+  <!-- ==================== INTERACTIVE FORM SECTION ==================== -->
+  <section class="contact-interface">
+    <div class="container">
+      
+      <div class="contact-wrapper">
+        <!-- LEFT: Contact Info Panel (Dark Blue) -->
+        <div class="contact-info-panel">
+          <h3>Contact Information</h3>
+          <p class="info-intro">Fill out the form and our team will get back to you within 24 hours.</p>
+          
+          <div class="info-item">
+            <div class="icon-circle">✉️</div>
+            <div class="info-text">
+              <span class="label">Email Us</span>
+              <a href="mailto:hi@kimitisik.eu">hi@kimitisik.eu</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon-circle">🌍</div>
+            <div class="info-text">
+              <span class="label">Location</span>
+              <span>Netherlands - Lithuania - India</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon-circle">💼</div>
+            <div class="info-text">
+              <span class="label">Connect</span>
+              <a href="https://linkedin.com/company/kimitisik" target="_blank">LinkedIn Profile &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Decorative Circle -->
+          <div class="decor-circle"></div>
+        </div>
+
+        <!-- RIGHT: The Form (White) -->
+        <div class="contact-form-panel">
+          <form action="mailto:hi@kimitisik.eu" method="post" enctype="text/plain">
+            
+            <div class="form-row">
+              <!-- Input Group: Name -->
+              <div class="input-group">
+                <input type="text" id="name" name="Name" required placeholder=" ">
+                <label for="name">Your Name</label>
+                <span class="highlight"></span>
+              </div>
+              
+              <!-- Input Group: Organization -->
+              <div class="input-group">
+                <input type="text" id="organization" name="Organization" placeholder=" ">
+                <label for="organization">Organization</label>
+                <span class="highlight"></span>
+              </div>
+            </div>
+
+            <!-- Input Group: Email -->
+            <div class="input-group">
+              <input type="email" id="email" name="Email" required placeholder=" ">
+              <label for="email">Email Address</label>
+              <span class="highlight"></span>
+            </div>
+
+            <!-- Input Group: Select -->
+            <div class="input-group select-group">
+              <select id="interest" name="Interest">
+                <option value="" disabled selected>I am interested in...</option>
+                <option value="Universities">University Programs</option>
+                <option value="Business">Business Innovation</option>
+                <option value="Public">Public Sector Policy</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="highlight"></span>
+            </div>
+
+            <!-- Input Group: Message -->
+            <div class="input-group">
+              <textarea id="message" name="Message" required placeholder=" "></textarea>
+              <label for="message">How can we help you?</label>
+              <span class="highlight"></span>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              Send Message <span class="arrow">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+ <footer class="unified-footer">
+    <div class="container footer-grid">
+      <div class="footer-col about">
+        <h4>Kimitisik</h4>
+        <p>Empowering people to unlock their entrepreneurial mindset, make an impact, and keep balance in their lives.</p>
+      </div>
+
+      <div class="footer-col links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="solutions-universities.html">Co-creation for Universities</a></li>
+          <li><a href="solutions-business.html">Co-creation for Business</a></li>
+          <li><a href="projects.html">Case Studies</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact">
+        <h4>Contact</h4>
+        
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:hi@kimitisik.eu">hi@kimitisik.eu</a>
+        </div>
+
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          <a href="contact.html">Send us a message</a>
+        </div>
+
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span>Netherlands - Lithuania - India</span>
+        </div>
+
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          <span>Chamber of Commerce: 80416454</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-flex">
+        <p>&copy; 2025 Kimitisik B.V. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="#">Privacy & Wellbeing Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
