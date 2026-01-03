@@ -32,7 +32,9 @@ body {
   color: var(--text-main); 
   line-height: 1.6; 
   background: var(--c1); 
+  overflow-x: hidden; 
 }
+body.no-scroll { overflow: hidden; } /* For Mobile Menu */
 
 h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 700; line-height: 1.2; }
 h1 { margin-bottom: 15px; }
@@ -48,6 +50,7 @@ img { max-width: 100%; display: block; }
   background: none; color: #FFB74D;
   -webkit-background-clip: text; -webkit-text-fill-color: initial; 
 }
+.full-width { width: 100%; display: block; text-align: center; }
 
 /* --- Icon Quality Helpers --- */
 .icon-inline {
@@ -80,8 +83,10 @@ img { max-width: 100%; display: block; }
 }
 .header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .logo img { height: 35px; width: auto; }
+
+/* Navigation */
 .nav-menu { flex: 1; display: flex; justify-content: center; }
-.nav-links { display: flex; gap: 30px; }
+.nav-links { display: flex; gap: 30px; align-items: center; }
 .nav-item { 
   font-weight: 500; color: var(--text-main); font-size: 0.95rem; cursor: pointer; position: relative; padding-bottom: 2px;
 }
@@ -93,18 +98,21 @@ img { max-width: 100%; display: block; }
 
 .dropdown { position: relative; }
 .dropdown-menu {
-  position: absolute; top: 100%; left: 0; background: var(--c1); box-shadow: 0 4px 15px rgba(0,0,0,0.1); min-width: 220px; border-radius: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; padding: 10px 0;
+  position: absolute; top: 100%; left: 0; background: var(--c1); box-shadow: 0 4px 15px rgba(0,0,0,0.1); min-width: 220px; border-radius: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; padding: 10px 0; z-index: 1100;
 }
 .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 .dropdown-menu a { display: block; padding: 8px 20px; font-size: 0.9rem; }
 .dropdown-menu a:hover { background: var(--bg-blue-soft); color: var(--primary); }
 
+/* Buttons & Mobile Elements */
 .btn-primary-header { background: var(--primary); color: white; padding: 8px 20px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; }
 .btn-primary-header:hover { background: var(--primary-dark); }
-.hamburger { display: none; cursor: pointer; }
-.bar { display: block; width: 25px; height: 3px; margin: 5px; background: var(--dark); }
 
+.hamburger { display: none; cursor: pointer; z-index: 1001; }
+.bar { display: block; width: 25px; height: 3px; margin: 5px; background: var(--dark); transition: 0.3s; }
 .mobile-cta-item { display: none; }
+.mobile-menu-header { display: none; } /* Hidden on Desktop */
+.menu-overlay { display: none; }
 
 
 /* =========================================
@@ -136,9 +144,9 @@ img { max-width: 100%; display: block; }
 }
 .hero h1 { font-size: 3rem; color:white; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin-bottom: 15px; }
 .hero p { color: #e2e8f0; font-size: 1.15rem; margin-bottom: 2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-.btn-primary { background: var(--primary); color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+.btn-primary { background: var(--primary); color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; display: inline-block; }
 .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
-.btn-outline { border: 2px solid white; color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+.btn-outline { border: 2px solid white; color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; transition: 0.3s; display: inline-block; }
 .btn-outline:hover { background: white; color: var(--dark); }
 .btn-group { display: flex; gap: 15px; justify-content: center; }
 
@@ -194,7 +202,7 @@ img { max-width: 100%; display: block; }
 
 
 /* =========================================
-   6. SOLUTIONS DASHBOARD (SVG Icons)
+   6. SOLUTIONS DASHBOARD (Mobile Scroller Fix)
    ========================================= */
 .dashboard-section.dark-section {
     background-color: var(--dark); 
@@ -266,16 +274,122 @@ img { max-width: 100%; display: block; }
 
 
 /* =========================================
-   8. PROJECTS (Compact)
+   8. PROJECTS SLIDER (Desktop & Mobile Refined)
    ========================================= */
 .projects-section { background-color: #f8fafc; padding: 50px 0; }
-.banner-wrapper { position: relative; width: 100%; max-width: 1000px; height: 320px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-.banner-overlay { padding: 40px 30px 20px; }
-.banner-content h3 { font-size: 1.4rem; margin-bottom: 5px; }
+
+.project-slider-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 50px; /* Space for arrow buttons */
+}
+
+.project-track-container {
+  overflow: hidden;
+  height: auto;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.project-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  list-style: none;
+  padding: 0; margin: 0;
+}
+
+.project-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Card Styling: Desktop Default (Background Image) */
+.project-card {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Taller for desktop statement */
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px; 
+  display: flex;
+  align-items: flex-end; /* Text at bottom */
+  overflow: hidden;
+}
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.9) 100%);
+  z-index: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  color: white;
+  width: 100%;
+}
+
+.card-badge {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.card-content h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.card-content .partners {
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.btn-project-link {
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+.btn-project-link:hover { color: white; }
+
+/* Slider Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #e5e7eb;
+  width: 45px; height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--dark);
+  font-size: 1.2rem;
+  z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+.slider-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
 
 
 /* =========================================
-   9. CTA & FOOTER (Compact)
+   9. CTA & FOOTER
    ========================================= */
 .final-cta-section { 
     background-color: var(--bg-blue-soft); 
@@ -323,163 +437,148 @@ img { max-width: 100%; display: block; }
 .bottom-flex { display: flex; justify-content: space-between; align-items: center; }
 .legal-links { display: flex; gap: 20px; }
 
+
 /* =========================================
-   10. MOBILE
+   10. MOBILE & TABLET MEDIA QUERIES
    ========================================= */
+
 @media (max-width: 900px) {
+  /* --- A. Mobile Header & Menu Redesign (Drawer) --- */
   .header-actions .btn-primary-header { display: none; }
   .hamburger { display: block; }
-  .nav-menu { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: var(--c1); flex-direction: column; transition: 0.3s; padding: 40px; border-top: 1px solid #e5e7eb; }
-  .nav-menu.active { left: 0; }
+
+  /* Drawer Navigation Style */
+  .nav-menu {
+    position: fixed;
+    top: 0; right: 0;
+    width: 280px; /* Standard drawer width */
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 0;
+    transform: translateX(100%); /* Hidden right */
+    transition: transform 0.3s ease-in-out;
+    z-index: 2000;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+  }
+  .nav-menu.active { transform: translateX(0); }
+
+  /* Mobile Header inside Menu */
+  .mobile-menu-header {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 20px; border-bottom: 1px solid #f1f5f9;
+      background: #f8fafc;
+  }
+  .mobile-logo { height: 30px; width: auto; }
+  .close-menu { font-size: 2rem; cursor: pointer; color: var(--text-light); line-height: 1; }
+  .close-menu:hover { color: var(--primary); }
+
+  /* Links */
+  .nav-links { flex-direction: column; width: 100%; gap: 0; padding: 10px 0; }
+  .nav-links li { width: 100%; }
   
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .nav-item, .dropdown-toggle { 
+      display: flex; width: 100%; padding: 15px 25px; 
+      font-size: 1.1rem; color: var(--dark); font-weight: 600;
+      border-bottom: 1px solid #f8fafc;
+  }
+  .nav-item:hover, .nav-item.active { color: var(--primary); background: #fffbf5; }
+  .nav-item::after { display: none; } /* Remove underline hover effect */
+  
+  .mobile-cta-item { display: block; margin-top: 20px; padding: 0 20px; }
+  
+  /* Dropdown in Mobile */
+  .dropdown-menu {
+      position: static; opacity: 1; visibility: visible; 
+      transform: none; box-shadow: none; background: #fff;
+      width: 100%; padding: 0; 
+      border-top: 1px solid #f1f5f9;
+      display: none; /* Hidden by default */
+  }
+  .dropdown:hover .dropdown-menu { display: block; } /* Simple hover for mobile, or click via JS */
+  .dropdown-menu a { padding: 12px 25px 12px 40px; font-size: 0.95rem; color: #64748b; border-bottom: 1px solid #f8fafc; }
+
+  /* Overlay Background */
+  .menu-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1500;
+      opacity: 0; visibility: hidden; transition: 0.3s;
+  }
+  .menu-overlay.active { opacity: 1; visibility: visible; }
+
+  /* --- B. Solutions Dashboard Fix (ALIGNMENT FIX) --- */
   .dashboard-card { flex-direction: column; height: auto; }
-  .dashboard-sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding: 10px; border-right: none; border-bottom: 1px solid #e5e7eb; }
-  .dash-btn { flex: 0 0 auto; width: 180px; padding: 10px; }
+  
+  .dashboard-sidebar { 
+      width: 100%; 
+      flex-direction: row; 
+      overflow-x: auto; /* Enable Scroll */
+      padding: 15px; 
+      border-right: none; 
+      border-bottom: 1px solid #e5e7eb;
+      justify-content: flex-start; /* FIX: Aligns items to start so first isn't cut off */
+      gap: 15px;
+      scrollbar-width: none; /* Hide scrollbar Firefox */
+      -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+  }
+  .dashboard-sidebar::-webkit-scrollbar { display: none; }
+
+  .dash-btn { 
+      flex: 0 0 auto; /* Don't shrink */
+      width: 160px; /* Fixed width */
+      padding: 10px; 
+      background: white; border: 1px solid #e2e8f0; 
+  }
+  
   .feature-grid { grid-template-columns: 1fr; }
   
+  /* --- C. General Mobile Adjustments --- */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .split-container { flex-direction: column; gap: 30px; }
   .split-text h2 { font-size: 1.8rem; text-align: center; }
   
-  .banner-wrapper { height: 350px; } 
   .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
   .contact-item { justify-content: center; text-align: left; }
   .bottom-flex { flex-direction: column; text-align: center; gap: 10px; }
-}
 
-/* =========================================
-   PROJECT SLIDER STYLES
-   ========================================= */
-.project-slider-wrapper {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 50px; /* Space for buttons */
-}
-
-.project-track-container {
-  overflow: hidden;
-  height: auto; /* Adjust based on card height */
-  position: relative;
-}
-
-.project-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.project-slide {
-  min-width: 100%; /* Shows one slide at a time */
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-/* Card Styling */
-.project-card {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column; /* Mobile first (stacked) */
-  transition: transform 0.3s;
-  border: 1px solid #f1f5f9;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
-
-.card-image {
-  height: 250px;
-  position: relative;
-  overflow: hidden;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-badge {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 5px 12px;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--primary);
-  text-transform: uppercase;
-}
-
-.card-content {
-  padding: 25px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.card-content h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: var(--dark);
-}
-
-.card-content .partners {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  margin-bottom: 20px;
-}
-
-/* Slider Buttons */
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: white;
-  border: 1px solid #e5e7eb;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  color: var(--dark);
-  font-size: 1.2rem;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: 0.2s;
-}
-
-.slider-btn:hover {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
-}
-
-.prev-btn { left: 0; }
-.next-btn { right: 0; }
-
-/* Desktop View: Side-by-side Layout */
-@media (min-width: 768px) {
+  /* --- D. Project Card Mobile Revert (Stacked Format) --- */
+  .project-slider-wrapper { padding: 0; }
+  
+  /* Reset Card to Stacked View */
   .project-card {
-    flex-direction: row; /* Image left, Text right */
-    height: 320px;
+      flex-direction: column;
+      height: auto;
+      background-image: none !important; /* Remove BG image */
+      background: white;
+      border: 1px solid #f1f5f9;
   }
-  .card-image {
-    width: 50%;
-    height: 100%;
+  
+  .project-card-overlay { display: none; } /* No dark overlay */
+
+  /* Re-create Image area for mobile */
+  .project-card::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 220px; 
+      background-image: inherit; /* Inherit the inline style URL */
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px 16px 0 0;
   }
+
   .card-content {
-    width: 50%;
-    text-align: left;
+      padding: 25px 20px;
+      color: var(--text-main); /* Text back to dark */
+      background: white;
   }
+  
+  .card-content h3 { color: var(--dark); font-size: 1.4rem; text-shadow: none; }
+  .card-content .partners { color: var(--text-light); }
+  .btn-project-link { color: var(--primary); }
+  
+  /* Slider Buttons on Mobile - Make smaller */
+  .slider-btn { width: 35px; height: 35px; font-size: 1rem; background: rgba(255,255,255,0.9); }
+  .prev-btn { left: 10px; }
+  .next-btn { right: 10px; }
 }
