@@ -1,117 +1,153 @@
+/* =========================================
+   1. DASHBOARD TABS
+   ========================================= */
+function openDashboardTab(evt, tabName) {
+  // Hide all panes
+  var panes = document.getElementsByClassName("dash-pane");
+  for (var i = 0; i < panes.length; i++) {
+    panes[i].classList.remove("active");
+    panes[i].style.display = "none";
+  }
+  
+  // Remove active class from buttons
+  var buttons = document.getElementsByClassName("dash-btn");
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active");
+  }
+  
+  // Show current pane and activate button
+  document.getElementById(tabName).style.display = "flex";
+  // Small timeout to allow display:flex to apply before adding opacity class
+  setTimeout(() => document.getElementById(tabName).classList.add("active"), 10);
+  evt.currentTarget.classList.add("active");
+}
+
+/* =========================================
+   2. MOBILE MENU & DROPDOWNS
+   ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    const closeMenu = document.querySelector(".close-menu");
+    const menuOverlay = document.querySelector(".menu-overlay");
 
-    // --- 1. Mobile Menu ---
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if(hamburger) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
+    function openMenu() {
+        navMenu.classList.add("active");
+        menuOverlay.classList.add("active");
+        document.body.classList.add("no-scroll");
     }
 
-    // --- 2. Dashboard Tabs ---
-    window.openDashboardTab = function(evt, tabName) {
-        const panes = document.querySelectorAll('.dash-pane');
-        panes.forEach(pane => pane.classList.remove('active'));
+    function closeMenuFunc() {
+        navMenu.classList.remove("active");
+        menuOverlay.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+    }
 
-        const buttons = document.querySelectorAll('.dash-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
+    if(hamburger) hamburger.addEventListener("click", openMenu);
+    if(closeMenu) closeMenu.addEventListener("click", closeMenuFunc);
+    if(menuOverlay) menuOverlay.addEventListener("click", closeMenuFunc);
 
-        const target = document.getElementById(tabName);
-        if(target) target.classList.add('active');
-        
-        if(evt && evt.currentTarget) {
-            evt.currentTarget.classList.add('active');
-        }
-    };
+    // FIX: Only close menu when clicking actual links (class .menu-link), 
+    // NOT when clicking the dropdown toggle or container.
+    document.querySelectorAll(".menu-link").forEach(n => n.addEventListener("click", closeMenuFunc));
 
-    // --- 3. Projects Slider (UPDATED) ---
+    // MOBILE DROPDOWN TOGGLE LOGIC
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    if (dropdownToggle && dropdownMenu) {
+        dropdownToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Stop click from bubbling up to parents
+            dropdownMenu.classList.toggle('show-mobile'); // Toggle visibility
+        });
+    }
+});
+
+/* =========================================
+   3. PROJECT SLIDER (AUTO PLAY)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('projectTrack');
-    
-    // Only run if the slider exists on the page
-    if (track) {
-        const slides = Array.from(track.children);
-        const nextButton = document.getElementById('nextProject');
-        const prevButton = document.getElementById('prevProject');
-        
-        let currentSlideIndex = 0;
+    if(!track) return; // Guard clause if element missing
 
-        function updateSliderPosition() {
-            // Get width of one slide dynamically
-            const slideWidth = slides[0].getBoundingClientRect().width;
-            track.style.transform = 'translateX(-' + (slideWidth * currentSlideIndex) + 'px)';
-        }
+    const slides = Array.from(track.children);
+    const nextBtn = document.getElementById('nextProject');
+    const prevBtn = document.getElementById('prevProject');
+    let currentIndex = 0;
 
-        // Next Button
-        if(nextButton) {
-            nextButton.addEventListener('click', () => {
-                currentSlideIndex++;
-                if (currentSlideIndex >= slides.length) {
-                    currentSlideIndex = 0; // Loop back to start
-                }
-                updateSliderPosition();
-            });
-        }
-
-        // Prev Button
-        if(prevButton) {
-            prevButton.addEventListener('click', () => {
-                currentSlideIndex--;
-                if (currentSlideIndex < 0) {
-                    currentSlideIndex = slides.length - 1; // Loop to end
-                }
-                updateSliderPosition();
-            });
-        }
-
-        // Recalculate on window resize to keep alignment correct
-        window.addEventListener('resize', updateSliderPosition);
+    function updateSlidePosition() {
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
     }
 
+    function moveToNextSlide() {
+        if (currentIndex === slides.length - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        updateSlidePosition();
+    }
 
-    // --- 4. Stats Counter ---
-    const statsSection = document.querySelector('#statsSection');
+    function moveToPrevSlide() {
+        if (currentIndex === 0) {
+            currentIndex = slides.length - 1;
+        } else {
+            currentIndex--;
+        }
+        updateSlidePosition();
+    }
+
+    if(nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            moveToNextSlide();
+            resetAutoPlay();
+        });
+    }
+
+    if(prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            moveToPrevSlide();
+            resetAutoPlay();
+        });
+    }
+
+    let autoPlayInterval = setInterval(moveToNextSlide, 4000); 
+
+    function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(moveToNextSlide, 4000);
+    }
+});
+
+/* =========================================
+   4. ANIMATED STATS COUNTER
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.counter');
-    let started = false;
-
-    function startCounting() {
-        counters.forEach(counter => {
+    const options = { threshold: 0.5 };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            const counter = entry.target;
             const target = +counter.getAttribute('data-target');
-            const duration = 1500; 
-            const increment = target / (duration / 16); 
-
-            let current = 0;
+            const increment = target / 50; 
+            
+            let c = 0;
             const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    counter.innerText = Math.ceil(current);
+                c += increment;
+                if(c < target) {
+                    counter.innerText = Math.ceil(c);
                     requestAnimationFrame(updateCounter);
                 } else {
                     counter.innerText = target;
-                    counter.classList.add('pulse-active');
                 }
             };
             updateCounter();
-        });
-    }
+            observer.unobserve(counter);
+        }
+      });
+    }, options);
 
-    if(statsSection) {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && !started) {
-                startCounting();
-                started = true;
-            }
-        }, { threshold: 0.5 });
-        observer.observe(statsSection);
-    }
+    counters.forEach(counter => { observer.observe(counter); });
 });

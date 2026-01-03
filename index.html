@@ -16,31 +16,32 @@
 
   <header class="header">
     <div class="container header-container">
+      
       <a href="index.html" class="logo">
         <img src="assets/mainlogo.png" alt="Kimitisik Logo">
       </a>
 
       <nav class="nav-menu">
         <div class="mobile-menu-header">
-           <img src="assets/mainlogo.png" alt="Logo" class="mobile-logo">
+           <div></div> 
            <span class="close-menu">&times;</span>
         </div>
 
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-item active">Home</a></li>
+          <li><a href="index.html" class="nav-item menu-link active">Home</a></li>
           
           <li class="dropdown">
-            <span class="nav-item dropdown-toggle">Solutions ▾</span>
+            <span class="dropdown-toggle">Solutions ▾</span>
             <ul class="dropdown-menu">
-              <li><a href="solutions-universities.html">For Universities</a></li>
-              <li><a href="solutions-business.html">For Business</a></li>
-              <li><a href="solutions-public.html">Public Sector</a></li>
+              <li><a href="solutions-universities.html" class="menu-link">For Universities</a></li>
+              <li><a href="solutions-business.html" class="menu-link">For Business</a></li>
+              <li><a href="solutions-public.html" class="menu-link">Public Sector</a></li>
             </ul>
           </li>
 
-          <li><a href="events.html" class="nav-item">Events</a></li>
-          <li><a href="about.html" class="nav-item">About Us</a></li>
-          <li><a href="contact.html" class="nav-item">Contact</a></li>
+          <li><a href="events.html" class="nav-item menu-link">Events</a></li>
+          <li><a href="about.html" class="nav-item menu-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-item menu-link">Contact</a></li>
           
           <li class="mobile-cta-item">
             <a href="contact.html" class="btn btn-primary full-width">Book Discovery Call</a>
@@ -302,8 +303,11 @@
           <ul class="project-track" id="projectTrack">
             
             <li class="project-slide current-slide">
-              <div class="project-card" style="background-image: url('assets/project2.jpeg');">
-                <div class="project-card-overlay"></div>
+              <div class="project-card">
+                <div class="card-image-bg">
+                    <img src="assets/project2.jpeg" alt="EIT Urban Mobility">
+                </div>
+                <div class="card-overlay"></div>
                 <div class="card-content">
                     <span class="card-badge">Urban Mobility</span>
                     <h3>EIT Urban Mobility Summer School</h3>
@@ -314,8 +318,11 @@
             </li>
 
             <li class="project-slide">
-              <div class="project-card" style="background-image: url('assets/project1.jpeg');">
-                <div class="project-card-overlay"></div>
+              <div class="project-card">
+                <div class="card-image-bg">
+                    <img src="assets/project1.jpeg" alt="Resilient Cities">
+                </div>
+                <div class="card-overlay"></div>
                 <div class="card-content">
                   <span class="card-badge">Resilient Cities</span>
                   <h3>Resilient Cities Summer School</h3>
@@ -326,8 +333,11 @@
             </li>
 
             <li class="project-slide">
-              <div class="project-card" style="background-image: url('assets/project3.jpeg');">
-                <div class="project-card-overlay"></div>
+              <div class="project-card">
+                <div class="card-image-bg">
+                    <img src="assets/project3.jpeg" alt="Health Innovation">
+                </div>
+                <div class="card-overlay"></div>
                 <div class="card-content">
                   <span class="card-badge">Health Innovation</span>
                   <h3>Entrepreneurial Health Ecosystems</h3>
@@ -459,8 +469,21 @@
     closeMenu.addEventListener("click", closeMenuFunc);
     menuOverlay.addEventListener("click", closeMenuFunc);
 
-    // Close menu when a link is clicked
-    document.querySelectorAll(".nav-item").forEach(n => n.addEventListener("click", closeMenuFunc));
+    // FIXED: Only close menu when clicking actual links, NOT the dropdown toggle
+    document.querySelectorAll(".menu-link").forEach(n => n.addEventListener("click", closeMenuFunc));
+
+    // MOBILE DROPDOWN TOGGLE LOGIC
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent other clicks
+            // Toggle the visibility class
+            dropdownMenu.classList.toggle('show-mobile');
+            // Optional: Toggle text or icon if needed
+        });
+    }
 
     // --- 3. PROJECT SLIDER (AUTO PLAY) ---
     const track = document.getElementById('projectTrack');
