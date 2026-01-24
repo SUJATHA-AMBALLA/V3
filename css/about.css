@@ -1,315 +1,199 @@
 /* =========================================
-   ABOUT PAGE - TIGHTER LAYOUT
+   ABOUT PAGE - REFINED TYPOGRAPHY
    ========================================= */
 
-/* --- 1. HERO SECTION (Dark Blue) --- */
+/* --- 1. HERO SECTION --- */
 .about-hero {
     background-color: var(--dark);
-    padding: 120px 0 60px; /* Reduced from 160px/80px */
+    padding: 140px 0 80px; 
     text-align: center;
     color: white;
 }
 
 .hero-content {
-    max-width: 1000px; /* Widened from 800px to fill space */
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .orange-label {
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     display: block;
 }
 
 .about-hero h1 {
-    font-size: 3.2rem; /* Slightly smaller to balance */
-    line-height: 1.1;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
     color: white;
+    font-weight: 800; /* Strong Header */
 }
 
 .about-hero p {
-    font-size: 1.25rem; /* Larger font to fill visual space */
+    font-size: 1.25rem;
     color: #cbd5e1;
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto;
+    font-weight: 400; /* Regular weight, not light/thin */
 }
 
-
-/* --- 2. AUTHORITY BAR (Updated for Right-to-Left) --- */
-.authority-bar {
-    background: #f8fafc;
-    padding: 25px 0;
-    border-bottom: 1px solid #e2e8f0;
-    text-align: center;
-    overflow: hidden; 
-}
-
-.authority-bar p {
-    font-size: 0.8rem;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.slider-window {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-}
-
-.logo-track {
-    display: flex;
-    width: fit-content; 
-    gap: 60px; 
-    align-items: center;
-    /* Animation settings */
-    animation: scrollLogos 40s linear infinite;
-}
-
-.logo-track img {
-    height: 35px; 
-    width: auto;
-    filter: none; /* No grey filter */
-    opacity: 1;
-    flex-shrink: 0; 
-}
-
-/* ANIMATION FIX: RIGHT TO LEFT
-   Start at 0 (beginning) and move to -50% (leftwards)
-*/
-@keyframes scrollLogos {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* --- 3. COMMON SECTION STYLES --- */
+/* --- 2. STORY SECTION --- */
 .content-section {
-    padding: 60px 0; /* Reduced from 80px */
+    padding: 80px 0;
 }
-
 .bg-white { background-color: white; }
-.bg-blue { background-color: var(--bg-blue-soft); }
+.bg-blue-light { background-color: #f8fafc; }
 
 .text-center-wrapper {
-    max-width: 950px; /* Widened from 800px */
-    margin: 0 auto 40px; /* Reduced bottom margin */
+    max-width: 800px;
+    margin: 0 auto 50px;
     text-align: center;
-    padding: 0 20px;
 }
 
 .section-title {
     font-size: 2.2rem;
     color: var(--dark);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .separator-line {
     width: 60px;
     height: 4px;
     background-color: var(--primary);
-    margin: 0 auto 20px;
+    margin: 0 auto 30px;
     border-radius: 2px;
 }
 
-.section-lead {
-    font-size: 1.15rem;
+/* FIX: Better contrast and weight for lead text */
+.story-lead {
+    font-size: 1.25rem;
+    color: var(--dark);
+    font-weight: 500; /* Medium weight to bridge the gap */
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* FIX: Regular weight for body text */
+.story-text {
+    font-size: 1.1rem;
+    color: #374151; /* Slightly darker grey for better readability */
+    line-height: 1.8;
+    font-weight: 400; /* Standard Regular weight */
+}
+
+/* --- 3. TEAM SECTION (Text Only Grid) --- */
+.team-text-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card-text {
+    background: white;
+    padding: 35px 30px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-card-text:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.team-header {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 15px;
+}
+
+.team-header h3 {
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.team-role {
+    font-size: 0.85rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.team-bio {
+    font-size: 0.95rem;
     color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1; 
+    font-weight: 400; /* Regular weight */
+}
+
+.linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #0077b5; /* LinkedIn Blue */
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: auto; 
+}
+
+.linkedin-link:hover {
+    text-decoration: underline;
+}
+
+.linkedin-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* --- 4. CULTURAL NOTE (Footer Style) --- */
+.culture-note-section {
+    padding: 40px 0;
+    background-color: white;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.culture-box {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #64748b;
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
-/* --- 4. STORY STYLING --- */
-.story-box {
-    max-width: 900px; /* Widened significantly */
-    margin: 0 auto;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #374151;
-}
-
-.fun-fact-card {
-    margin-top: 25px;
-    background: var(--bg-blue-tint);
-    border: 1px solid #e2e8f0;
-    padding: 25px 30px;
-    border-radius: 12px;
-    text-align: center;
-    display: block; /* Ensures it fills width */
-    width: 100%;
-}
-
-.icon-bulb { font-size: 1.5rem; margin-right: 8px; vertical-align: middle; }
-
-/* --- 5. VALUES GRID --- */
-.values-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px; /* Tighter gap */
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.value-card {
-    background: white;
-    padding: 35px 25px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: transform 0.3s ease;
-    border-top: 4px solid transparent;
-}
-
-.value-card:hover {
-    transform: translateY(-5px);
-    border-top: 4px solid var(--primary);
-}
-
-.card-icon {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--bg-blue-soft);
-    -webkit-text-stroke: 1px var(--primary);
-    margin-bottom: 10px;
-}
-
-.value-card h3 {
-    color: var(--dark);
-    margin-bottom: 10px;
-    font-size: 1.25rem;
-}
-/* --- 6. EXECUTIVE PROFILE (Compact Image Version) --- */
-
-.team-section {
-    padding-bottom: 60px;
-}
-
-.executive-card {
-    background: white;
-    border-radius: 16px; /* Slightly smaller radius for smaller card */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    border: 1px solid #e2e8f0;
-    
-    width: 100%; 
-    max-width: 100%;
-    margin-top: 30px;
-    
-    display: flex;
-    /* FIX: Force a short, compact height */
-    height: 320px; 
-    overflow: hidden;
-}
-
-/* Left Column: Photo */
-.exec-visual {
-    width: 300px; /* Fixed width */
-    height: 100%; /* Matches card height */
-    flex-shrink: 0;
-    position: relative;
-    background-color: #cbd5e1;
-}
-
-.exec-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Crops the image to fit the short box */
-    object-position: top center; /* Focuses on the face */
+.culture-label {
     display: block;
-}
-
-/* Right Column: Content */
-.exec-content {
-    flex: 1;
-    /* Reduced padding to match the smaller height */
-    padding: 30px 40px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centers content vertically */
-}
-
-.exec-header h3 {
-    font-size: 1.8rem;
-    color: var(--dark);
-    margin-bottom: 5px;
-    line-height: 1.2;
-}
-
-.exec-role {
-    display: inline-block;
-    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--primary);
-    margin-bottom: 15px; 
-}
-
-.exec-bio {
-    font-size: 1rem;
-    color: #4b5563;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-/* Quote Box - Compact */
-.exec-quote-box {
-    background: var(--bg-blue-soft);
-    padding: 12px 20px;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.quote-mark {
-    font-size: 2.5rem;
-    line-height: 0;
-    color: #cbd5e1;
-    font-family: serif;
-    margin-top: 10px; 
-}
-
-.exec-quote-box p {
-    font-style: italic;
+    font-size: 0.75rem;
+    margin-bottom: 5px;
     color: var(--dark);
-    font-weight: 500;
-    margin: 0;
-    font-size: 0.95rem;
 }
 
-/* --- Mobile Responsiveness --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
-    .executive-card {
-        flex-direction: column;
-        height: auto; /* Allow auto height on mobile */
+    .team-text-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
     }
-
-    .exec-visual {
-        width: 100%;
-        height: 280px; /* Fixed height for image on mobile */
-    }
-
-    .exec-content {
-        padding: 30px 25px;
-    }
-}
-
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-    .about-hero h1 { font-size: 2.2rem; }
-    .hero-content, .text-center-wrapper, .story-box { max-width: 100%; }
-    .values-grid-3 { grid-template-columns: 1fr; }
-    .logo-row { gap: 30px; }
+    
+    .about-hero h1 { font-size: 2.5rem; }
 }
