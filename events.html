@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Events Calendar | Kimitisik</title>
-  <meta name="description" content="Upcoming innovation events, summer schools, and workshops.">
+  <title>Programs & Events | Kimitisik</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -20,8 +19,11 @@
       <a href="index.html" class="logo">
         <img src="assets/mainlogo.png" alt="Kimitisik Logo">
       </a>
-
       <nav class="nav-menu">
+        <div class="mobile-menu-header">
+           <div></div> 
+           <span class="close-menu">&times;</span>
+        </div>
         <ul class="nav-links">
           <li><a href="index.html" class="nav-item">Home</a></li>
           <li class="dropdown">
@@ -35,214 +37,192 @@
           <li><a href="events.html" class="nav-item active">Events</a></li>
           <li><a href="about.html" class="nav-item">About Us</a></li>
           <li><a href="contact.html" class="nav-item">Contact</a></li>
-          
           <li class="mobile-cta-item">
             <a href="contact.html" class="btn btn-primary full-width">Book Discovery Call</a>
           </li>
         </ul>
       </nav>
-
       <div class="header-actions">
         <a href="contact.html" class="btn btn-primary-header">Book Discovery Call</a>
-        <div class="hamburger">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </div>
+        <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
       </div>
     </div>
+    <div class="menu-overlay"></div>
   </header>
 
-  <div class="events-page-wrapper container">
-    <aside class="events-sidebar">
+  <div class="page-spacer"></div>
+
+  <section class="events-intro container">
+      <h1>Programs for People, <br><span class="text-highlight">Partners, and Places.</span></h1>
+      <p class="intro-lead">We design, deliver, and scale Challenge-Based Learning experiences that build innovation capacity at every level—from individual learners to entire regional ecosystems.</p>
+  </section>
+
+  <section class="top-dashboard container">
       
-      <div class="sidebar-widget">
-        <div class="calendar-nav">
+      <div class="featured-spotlight">
+          <div class="spotlight-content">
+              <span class="spotlight-badge">Featured Program</span>
+              <h2>Bali Mindfulness & Innovation Retreat</h2>
+              <div class="spotlight-meta">
+                  <span>📅 Oct 15-20, 2026</span>
+                  <span>📍 Bali, Indonesia</span>
+              </div>
+              <p>A deep-dive innovation retreat focusing on sustainable leadership and mindfulness. Connect with global changemakers in a serene environment.</p>
+              <a href="contact.html" class="btn btn-primary">Join Waitlist</a>
+          </div>
+          <div class="spotlight-image">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1000" alt="Bali Retreat">
+          </div>
+      </div>
+
+      <div class="calendar-sidebar">
+          <div class="calendar-nav">
             <button id="prevMonth" class="cal-nav-btn">&lt;</button>
-            <h3 class="widget-title" id="calMonthYear">January 2026</h3>
+            <h4 id="calMonthYear">January 2026</h4>
             <button id="nextMonth" class="cal-nav-btn">&gt;</button>
-        </div>
-        
-        <div class="mini-calendar">
-          <div class="cal-header">
-            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
           </div>
-          <div class="cal-grid" id="miniCalendarGrid"></div>
-        </div>
-      </div>
-
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Categories</h3>
-        <ul class="filter-list" id="categoryFilters">
-          <li><label><input type="checkbox" value="summer-school"> Summer Schools</label></li>
-          <li><label><input type="checkbox" value="workshop"> Workshops</label></li>
-          <li><label><input type="checkbox" value="innovation"> Innovation Sprints</label></li>
-          <li><label><input type="checkbox" value="bootcamp"> Bootcamps</label></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Locations</h3>
-        <ul class="filter-list" id="locationFilters">
-          <li><label><input type="checkbox" value="central-europe"> Central Europe</label></li>
-          <li><label><input type="checkbox" value="baltics"> Baltics</label></li>
-          <li><label><input type="checkbox" value="budapest"> Budapest</label></li>
-          <li><label><input type="checkbox" value="online"> Virtual / Online</label></li>
-        </ul>
-      </div>
-    </aside>
-
-    <main class="events-main">
-      <div class="events-toolbar">
-        <h1>Events Calendar</h1>
-        <div class="toolbar-controls">
-          <div class="search-box">
-            <svg class="icon-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            <input type="text" id="eventSearch" placeholder="Search events...">
+          <div class="mini-calendar">
+            <div class="cal-header">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div class="cal-grid" id="miniCalendarGrid"></div>
           </div>
-          <div class="view-options">
-            <button class="active" onclick="window.location.reload()">Reset</button>
+      </div>
+
+  </section>
+
+  <section class="events-directory container">
+      
+      <div class="directory-header">
+          <div class="filter-bar">
+              <button class="filter-btn active" data-filter="all">All Events</button>
+              <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+              <button class="filter-btn" data-filter="summer-school">Summer Schools</button>
+              <button class="filter-btn" data-filter="workshop">Winter / Workshops</button>
+              <button class="filter-btn" data-filter="virtual">Virtual</button>
           </div>
-        </div>
       </div>
 
-      <div id="statusMessage" class="status-message" style="display:none;"></div>
+      <div class="cards-grid" id="eventsGrid">
+          
+          <article class="grid-card" data-category="workshop virtual upcoming" data-date="2026-01-15">
+              <div class="card-img-top">
+                  <div class="date-tag">
+                      <span class="d-day">15</span><span class="d-month">JAN</span>
+                  </div>
+                  <img src="assets/workshop1.jpeg" alt="Workshop">
+              </div>
+              <div class="card-body">
+                  <span class="c-cat">Workshop</span>
+                  <h4>Winter Innovation Kickoff</h4>
+                  <p class="c-loc">📍 Online / Virtual</p>
+                  <a href="contact.html" class="btn-card">Register Now</a>
+              </div>
+          </article>
 
-      <div id="eventsContainer">
-        
-        <div class="event-group">
-            <h2 class="date-header">January 2026</h2>
-            <article class="event-card" 
-                     data-date="2026-01-15" 
-                     data-category="workshop" 
-                     data-location="online">
-              <div class="event-image">
-                 <div class="date-badge">
-                   <span class="day">15</span><span class="month">JAN</span>
-                 </div>
-                <img src="assets/workshop1.jpeg" alt="Winter Innovation Workshop">
+          <article class="grid-card" data-category="summer-school upcoming" data-date="2026-07-07">
+              <div class="card-img-top">
+                  <div class="date-tag">
+                      <span class="d-day">07</span><span class="d-month">JUL</span>
+                  </div>
+                  <img src="assets/project1.jpeg" alt="Summer School">
               </div>
-              <div class="event-details">
-                <div class="event-meta-top"><span class="event-category">Workshop</span></div>
-                <h3 class="event-title"><a href="#">Winter Innovation Kickoff</a></h3>
-                <div class="event-time-loc">
-                  <span class="time">Thu, Jan 15, 2026</span><span class="sep">•</span><span class="loc">Online</span>
-                </div>
-                <div class="event-actions">
-                  <a href="#" class="btn btn-sm btn-primary">Register</a>
-                </div>
+              <div class="card-body">
+                  <span class="c-cat">Summer School</span>
+                  <h4>Central Europe School</h4>
+                  <p class="c-loc">📍 Vienna & Bratislava</p>
+                  <a href="contact.html" class="btn-card">Apply Now</a>
               </div>
-            </article>
-        </div>
+          </article>
 
-        <div class="event-group">
-            <h2 class="date-header">July 2026</h2>
-            <article class="event-card" data-date="2026-07-07" data-category="summer-school" data-location="central-europe online">
-              <div class="event-image">
-                 <div class="date-badge"><span class="day">07</span><span class="month">JUL</span></div>
-                <img src="assets/project1.jpeg" alt="Central Europe Summer School">
+          <article class="grid-card" data-category="summer-school upcoming" data-date="2026-07-20">
+              <div class="card-img-top">
+                  <div class="date-tag">
+                      <span class="d-day">20</span><span class="d-month">JUL</span>
+                  </div>
+                  <img src="assets/project3.jpeg" alt="Budapest">
               </div>
-              <div class="event-details">
-                <div class="event-meta-top"><span class="event-category">Summer School</span></div>
-                <h3 class="event-title"><a href="#">Central Europe Summer School</a></h3>
-                <div class="event-time-loc"><span class="time">Tue, Jul 7, 2026</span><span class="sep">•</span><span class="loc">Central Europe</span></div>
-                <div class="event-actions"><a href="#" class="btn btn-sm btn-primary">I'm Interested</a></div>
+              <div class="card-body">
+                  <span class="c-cat">Summer School</span>
+                  <h4>Budapest Innovation</h4>
+                  <p class="c-loc">📍 Budapest, Hungary</p>
+                  <a href="contact.html" class="btn-card">Apply Now</a>
               </div>
-            </article>
-            
-            <article class="event-card" data-date="2026-07-20" data-category="summer-school" data-location="budapest">
-              <div class="event-image">
-                <div class="date-badge"><span class="day">20</span><span class="month">JUL</span></div>
-                <img src="assets/project3.jpeg" alt="Budapest Summer School">
-              </div>
-              <div class="event-details">
-                <div class="event-meta-top"><span class="event-category">Summer School</span></div>
-                <h3 class="event-title"><a href="#">Budapest Summer School</a></h3>
-                <div class="event-time-loc"><span class="time">Mon, Jul 20, 2026</span><span class="sep">•</span><span class="loc">Budapest</span></div>
-                <div class="event-actions"><a href="#" class="btn btn-sm btn-primary">I'm Interested</a></div>
-              </div>
-            </article>
-        </div>
+          </article>
 
-        <div class="event-group">
-            <h2 class="date-header">August 2026</h2>
-            <article class="event-card" data-date="2026-08-10" data-category="summer-school" data-location="baltics">
-              <div class="event-image">
-                 <div class="date-badge"><span class="day">10</span><span class="month">AUG</span></div>
-                <img src="assets/project2.jpeg" alt="Baltic Summer School">
+          <article class="grid-card" data-category="summer-school upcoming" data-date="2026-08-10">
+              <div class="card-img-top">
+                  <div class="date-tag">
+                      <span class="d-day">10</span><span class="d-month">AUG</span>
+                  </div>
+                  <img src="assets/project2.jpeg" alt="Baltics">
               </div>
-              <div class="event-details">
-                <div class="event-meta-top"><span class="event-category">Summer School</span></div>
-                <h3 class="event-title"><a href="#">Baltic Summer School</a></h3>
-                <div class="event-time-loc"><span class="time">Mon, Aug 10, 2026</span><span class="sep">•</span><span class="loc">Riga, Latvia</span></div>
-                <div class="event-actions"><a href="#" class="btn btn-sm btn-primary">I'm Interested</a></div>
+              <div class="card-body">
+                  <span class="c-cat">Summer School</span>
+                  <h4>Baltic Summer School</h4>
+                  <p class="c-loc">📍 Riga, Latvia</p>
+                  <a href="contact.html" class="btn-card">Apply Now</a>
               </div>
-            </article>
-        </div>
+          </article>
+
+          <article class="grid-card" data-category="workshop past">
+              <div class="card-img-top grayscale-img">
+                  <div class="date-tag past-tag">PAST</div>
+                  <img src="assets/project3.jpeg" alt="ISM">
+              </div>
+              <div class="card-body">
+                  <span class="c-cat">Workshop</span>
+                  <h4>ISM Strategic Innovation</h4>
+                  <p class="c-loc">📍 Vilnius, Lithuania</p>
+                  <a href="https://www.linkedin.com/feed/update/urn:li:activity:7386316707709116416" target="_blank" class="btn-card outline">View Recap</a>
+              </div>
+          </article>
+
+          <article class="grid-card" data-category="workshop past">
+              <div class="card-img-top grayscale-img">
+                  <div class="date-tag past-tag">PAST</div>
+                  <img src="assets/project1.jpeg" alt="YWE">
+              </div>
+              <div class="card-body">
+                  <span class="c-cat">Entrepreneurship</span>
+                  <h4>Young Women Entrepreneurs</h4>
+                  <p class="c-loc">📍 Hybrid</p>
+                  <a href="https://www.linkedin.com/feed/update/urn:li:activity:7402268745865474048" target="_blank" class="btn-card outline">View Recap</a>
+              </div>
+          </article>
+
       </div>
-    </main>
-
-  </div>
+  </section>
 
   <footer class="unified-footer">
     <div class="container footer-grid">
       <div class="footer-col about">
         <h4>Kimitisik</h4>
-        <p>Empowering people to unlock their entrepreneurial mindset, make an impact, and keep balance in their lives.</p>
+        <p>Empowering people to unlock their entrepreneurial mindset.</p>
       </div>
-
       <div class="footer-col links">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="solutions-universities.html">Co-creation for Universities</a></li>
-          <li><a href="solutions-business.html">Co-creation for Business</a></li>
-          <li><a href="projects.html">Case Studies</a></li>
+          <li><a href="solutions-universities.html">For Universities</a></li>
+          <li><a href="solutions-business.html">For Business</a></li>
         </ul>
       </div>
-
       <div class="footer-col contact">
         <h4>Contact</h4>
-        
         <div class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <a href="mailto:hi@kimitisik.eu">hi@kimitisik.eu</a>
-        </div>
-
-        <div class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-          <a href="contact.html">Send us a message</a>
-        </div>
-
-        <div class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-          <span>Netherlands - Lithuania - India</span>
-        </div>
-
-        <div class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-          <span>Chamber of Commerce: 80416454</span>
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <div class="container bottom-flex">
         <p>&copy; 2025 Kimitisik B.V. All rights reserved.</p>
-        <div class="legal-links">
-          <a href="#">Privacy & Wellbeing Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
       </div>
     </div>
   </footer>
-  <script src="js/events.js"></script>
-  
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-  </script>
 
+  <script src="js/events.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

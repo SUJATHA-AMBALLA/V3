@@ -5,19 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Kimitisik</title>
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Main Styles -->
   <link rel="stylesheet" href="css/styles.css">
-  <!-- Contact Specific Styles -->
   <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
 
-  <!-- ==================== HEADER ==================== -->
   <header class="header">
     <div class="container header-container">
       <a href="index.html" class="logo">
@@ -25,6 +21,10 @@
       </a>
 
       <nav class="nav-menu">
+        <div class="mobile-menu-header">
+           <div></div> 
+           <span class="close-menu">&times;</span>
+        </div>
         <ul class="nav-links">
           <li><a href="index.html" class="nav-item">Home</a></li>
           <li class="dropdown">
@@ -38,6 +38,9 @@
            <li><a href="events.html" class="nav-item">Events</a></li>
           <li><a href="about.html" class="nav-item">About Us</a></li>
           <li><a href="contact.html" class="nav-item active">Contact</a></li>
+          <li class="mobile-cta-item">
+            <a href="contact.html" class="btn btn-primary full-width">Book Discovery Call</a>
+          </li>
         </ul>
       </nav>
 
@@ -48,9 +51,9 @@
         </div>
       </div>
     </div>
+    <div class="menu-overlay"></div>
   </header>
 
-  <!-- ==================== HERO ==================== -->
   <section class="contact-hero">
     <div class="container hero-text-center">
       <span class="badge-pill">Let's Connect</span>
@@ -59,12 +62,10 @@
     </div>
   </section>
 
-  <!-- ==================== INTERACTIVE FORM SECTION ==================== -->
   <section class="contact-interface">
     <div class="container">
       
       <div class="contact-wrapper">
-        <!-- LEFT: Contact Info Panel (Dark Blue) -->
         <div class="contact-info-panel">
           <h3>Contact Information</h3>
           <p class="info-intro">Fill out the form and our team will get back to you within 24 hours.</p>
@@ -93,40 +94,34 @@
             </div>
           </div>
 
-          <!-- Decorative Circle -->
           <div class="decor-circle"></div>
         </div>
 
-        <!-- RIGHT: The Form (White) -->
         <div class="contact-form-panel">
-          <form action="mailto:hi@kimitisik.eu" method="post" enctype="text/plain">
+          <form action="https://formspree.io/f/xoqgjgjr" method="POST">
             
             <div class="form-row">
-              <!-- Input Group: Name -->
               <div class="input-group">
-                <input type="text" id="name" name="Name" required placeholder=" ">
+                <input type="text" id="name" name="name" required placeholder=" " autocomplete="name">
                 <label for="name">Your Name</label>
                 <span class="highlight"></span>
               </div>
               
-              <!-- Input Group: Organization -->
               <div class="input-group">
-                <input type="text" id="organization" name="Organization" placeholder=" ">
+                <input type="text" id="organization" name="organization" placeholder=" " autocomplete="organization">
                 <label for="organization">Organization</label>
                 <span class="highlight"></span>
               </div>
             </div>
 
-            <!-- Input Group: Email -->
             <div class="input-group">
-              <input type="email" id="email" name="Email" required placeholder=" ">
+              <input type="email" id="email" name="email" required placeholder=" " autocomplete="email">
               <label for="email">Email Address</label>
               <span class="highlight"></span>
             </div>
 
-            <!-- Input Group: Select -->
             <div class="input-group select-group">
-              <select id="interest" name="Interest">
+              <select id="interest" name="interest">
                 <option value="" disabled selected>I am interested in...</option>
                 <option value="Universities">University Programs</option>
                 <option value="Business">Business Innovation</option>
@@ -136,9 +131,8 @@
               <span class="highlight"></span>
             </div>
 
-            <!-- Input Group: Message -->
             <div class="input-group">
-              <textarea id="message" name="Message" required placeholder=" "></textarea>
+              <textarea id="message" name="message" required placeholder=" "></textarea>
               <label for="message">How can we help you?</label>
               <span class="highlight"></span>
             </div>
@@ -153,8 +147,7 @@
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
- <footer class="unified-footer">
+  <footer class="unified-footer">
     <div class="container footer-grid">
       <div class="footer-col about">
         <h4>Kimitisik</h4>
@@ -165,8 +158,8 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="solutions-universities.html">Co-creation for Universities</a></li>
-          <li><a href="solutions-business.html">Co-creation for Business</a></li>
+          <li><a href="solutions-universities.html">For Universities</a></li>
+          <li><a href="solutions-business.html">For Business</a></li>
           <li><a href="projects.html">Case Studies</a></li>
         </ul>
       </div>
@@ -207,6 +200,32 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Mobile Menu Logic
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    const closeMenu = document.querySelector(".close-menu");
+    const menuOverlay = document.querySelector(".menu-overlay");
+
+    if(hamburger) {
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.add("active");
+            menuOverlay.classList.add("active");
+        });
+    }
+    if(closeMenu) {
+        closeMenu.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            menuOverlay.classList.remove("active");
+        });
+    }
+    if(menuOverlay) {
+        menuOverlay.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            menuOverlay.classList.remove("active");
+        });
+    }
+  </script>
 </body>
 </html>
