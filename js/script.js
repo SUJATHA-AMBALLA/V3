@@ -40,6 +40,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const tabBtns = document.querySelectorAll('.sol-nav-btn');
+    const tabContents = document.querySelectorAll('.sol-tab-content');
+
+    function switchTab(targetId) {
+        // Remove active classes
+        tabBtns.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active classes
+        const targetBtn = document.querySelector(`[data-target="${targetId}"]`);
+        const targetContent = document.getElementById(targetId);
+
+        if (targetBtn && targetContent) {
+            targetBtn.classList.add('active');
+            targetContent.classList.add('active');
+        }
+    }
+
+    // Click events for the side panel
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-target');
+            switchTab(target);
+        });
+    });
+
+    // logic for Header Nav to switch tabs
+    // Usage: <a href="#solutions" onclick="handleHeaderNav('public')">
+    window.handleHeaderNav = function(sector) {
+        switchTab(sector);
+        // Scroll to the section smoothly
+        document.getElementById('solutions').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // Optional: Auto-detect if user came from a specific page link
+    const hash = window.location.hash;
+    if (hash.includes('public')) switchTab('public');
+    if (hash.includes('business')) switchTab('business');
+});
+
 /* =========================================
    3. PROJECT SLIDER (AUTO PLAY ENABLED)
    ========================================= */

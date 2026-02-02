@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Scrapbook | Kimitisik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #f39221; --dark: #14213d; --paper: #fdfbf7; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #e2e8f0; color: #333; overflow-x: hidden; }
+
+    /* --- 1. HERO (Keep it simple) --- */
+    .hero-header {
+        height: 50vh;
+        background-image: url('assets/project3.jpeg'); /* Event Image */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .hero-header::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    
+    .hero-title {
+        position: relative; z-index: 2; color: white; text-align: center;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .hero-title h1 { font-family: 'Montserrat'; font-size: 3rem; margin-bottom: 10px; }
+    .hero-title .badge { background: var(--primary); padding: 5px 15px; border-radius: 20px; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; }
+
+    /* --- 2. THE BOOK CONTAINER --- */
+    .table-surface {
+        padding: 60px 20px;
+        background: #cbd5e1; /* Simulates a table surface */
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .book {
+        display: flex;
+        width: 100%;
+        max-width: 1100px;
+        background: var(--paper);
+        box-shadow: 
+            0 20px 50px rgba(0,0,0,0.3), /* Deep shadow */
+            inset 0 0 0 1px #e5e5e5; /* Paper edge */
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* The Center Spine Effect */
+    .book::before {
+        content: '';
+        position: absolute;
+        left: 50%; top: 0; bottom: 0; width: 40px;
+        background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.05));
+        transform: translateX(-50%);
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    /* PAGES */
+    .page {
+        flex: 1;
+        padding: 60px;
+        position: relative;
+    }
+
+    /* Left Page: Text */
+    .page-left { border-right: 1px solid #eee; }
+    
+    .handwritten-note {
+        font-family: 'Caveat', cursive; /* Cute handwriting font */
+        color: var(--primary);
+        font-size: 1.5rem;
+        transform: rotate(-2deg);
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    h2 { font-family: 'Montserrat'; font-size: 2rem; color: var(--dark); margin-bottom: 20px; }
+    p { margin-bottom: 20px; line-height: 1.8; color: #4b5563; }
+    
+    .btn-back {
+        display: inline-block; margin-top: 30px; 
+        color: var(--dark); text-decoration: none; font-weight: 700;
+        border-bottom: 2px solid var(--primary);
+    }
+
+    /* Right Page: Gallery Grid */
+    .page-right { background: #faf8f5; }
+    
+    .polaroid-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        transform: rotate(1deg); /* Slight tilt for realism */
+    }
+
+    .polaroid {
+        background: white;
+        padding: 10px 10px 30px 10px; /* Extra bottom padding for "Polaroid" look */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        transform: rotate(var(--tilt));
+        transition: transform 0.3s ease;
+    }
+    .polaroid:hover { transform: scale(1.05) rotate(0deg); z-index: 5; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    
+    .polaroid img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border: 1px solid #eee;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+        .book { flex-direction: column; }
+        .book::before { display: none; } /* Hide spine on mobile */
+        .page-left { border-right: none; border-bottom: 1px dashed #ccc; }
+        .hero-header { height: 40vh; }
+        .hero-title h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero-header">
+    <div class="hero-title">
+      <span class="badge">Summer School Recap</span>
+      <h1>Budapest 2025</h1>
+    </div>
+  </header>
+
+  <section class="table-surface">
+    <div class="book">
+      
+      <div class="page page-left">
+        <span class="handwritten-note">July 20-25 • What a week!</span>
+        <h2>Urban Mobility Challenge</h2>
+        <p>40 students came together in Budapest to solve real traffic and community problems. It was intense, fun, and incredibly productive.</p>
+        
+        <p><strong>The Big Win:</strong> Team Orbit designed a night-time tram delivery system. Imagine trams carrying parcels while the city sleeps! 🚋📦</p>
+        
+        <p>We also saw walking apps and rural ride-sharing ideas. The energy was unmatched.</p>
+
+        <a href="events.html" class="btn-back">← Close Scrapbook</a>
+      </div>
+
+      <div class="page page-right">
+        <div class="polaroid-grid">
+          
+          <div class="polaroid" style="--tilt: -3deg;">
+            <img src="assets/project1.jpeg" alt="Workshop">
+          </div>
+          
+          <div class="polaroid" style="--tilt: 2deg;">
+            <img src="assets/project2.jpeg" alt="Team">
+          </div>
+
+          <div class="polaroid" style="--tilt: -1deg;">
+            <img src="assets/project3.jpeg" alt="Tram">
+          </div>
+
+          <div class="polaroid" style="--tilt: 4deg;">
+            <img src="assets/workshop1.jpeg" alt="Fun">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

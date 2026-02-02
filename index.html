@@ -32,9 +32,9 @@
           <li class="dropdown">
             <span class="dropdown-toggle">Solutions ▾</span>
             <ul class="dropdown-menu">
-              <li><a href="solutions-universities.html" class="menu-link">For Universities</a></li>
-              <li><a href="solutions-business.html" class="menu-link">For Business</a></li>
-              <li><a href="solutions-public.html" class="menu-link">Public Sector</a></li>
+              <li><a href="#solutions" onclick="handleHeaderNav('universities')">For Universities</a></li>
+              <li><a href="#solutions" onclick="handleHeaderNav('business')">For Business</a></li>
+              <li><a href="#solutions" onclick="handleHeaderNav('public')">Public Sector</a></li>
             </ul>
           </li>
 
@@ -43,7 +43,7 @@
           <li><a href="contact.html" class="nav-item menu-link">Contact</a></li>
           
           <li class="mobile-cta-item">
-            <a href="contact.html" class="btn btn-primary full-width">Book Discovery Call</a>
+            <a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary full-width">Book Discovery Call</a>
           </li>
         </ul>
       </nav>
@@ -72,23 +72,23 @@
     </div>
   </section>
 
-  <div class="trust-bar-section" id="partners">
-    <div class="container">
+  <div class="trust-bar-section" >
+    <div class="container" id="partners">
         <div class="trust-card">
             <p class="trust-label">Co-creating with</p>
             <div class="slider-wrapper">
                 <div class="slider">
                     <div class="slide-track">
-                        <div class="slide"><img src="assets/logo1.jpeg" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo2.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo3.jpg" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo4.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo5.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo6.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo7.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo8.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo9.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logo10.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/1.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/2.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/3.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/4.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/5.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/6.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/7.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/8.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/9.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/10.png" alt="Partner"></div>
                     </div>
                 </div>
             </div>
@@ -140,54 +140,181 @@
     </div>
   </section>
 
-  <section class="section solutions-grid-section" id="solutions">
-    <div class="container">
-      <div class="section-header centered-header">
-         <h2>Solutions for <span class="text-highlight">Innovation Goals</span></h2>
-        <p>Tailored programs for academia, industry, and government.</p>
+  <section class="section solutions-tabs-section" id="solutions">
+  <div class="container">
+    <div class="section-header centered-header">
+      <h2>Solutions for <span class="text-highlight">Every Sector</span></h2>
+      <p>Tailored innovation programs for academia, industry, and government.</p>
+    </div>
+
+    <div class="solutions-widget">
+      <div class="solutions-nav">
+        <button class="sol-nav-btn active" data-target="universities">
+          <div class="sol-icon-box bg-blue-soft"><svg class="sol-icon" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="currentColor"/></svg></div>
+          <div class="sol-nav-text"><strong>Universities & HEIs</strong><span>Curriculum & Faculty</span></div>
+        </button>
+        
+        <button class="sol-nav-btn" data-target="business">
+          <div class="sol-icon-box bg-orange-soft"><svg class="sol-icon" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="currentColor"/></svg></div>
+          <div class="sol-nav-text"><strong>Business & Industry</strong><span>R&D & Talent</span></div>
+        </button>
+
+        <button class="sol-nav-btn" data-target="public">
+          <div class="sol-icon-box bg-red-soft"><svg class="sol-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.2v3.5c0 .7-.6 1.3-1.2 1.3H9.2c-.6 0-1.2-.6-1.2-1.2v-3.5c0-.7.6-1.3 1.2-1.3V9.5C9.2 8.1 10.6 7 12 7zm0 1c-.8 0-1.5.7-1.5 1.5V11h3V9.5c0-.8-.7-1.5-1.5-1.5z" fill="currentColor"/></svg></div>
+          <div class="sol-nav-text"><strong>Public Sector & Hubs</strong><span>Ecosystems & Policy</span></div>
+        </button>
+
+        <button class="sol-nav-btn" data-target="researchers">
+  <div class="sol-icon-box bg-grey-soft">
+    <svg class="sol-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9.5 2a5 5 0 0 1 0 10 5 5 0 0 1 0-10zM14.5 12a5 5 0 0 1 0 10 5 5 0 0 1 0-10z" stroke-dasharray="2 2"/>
+      <path d="M12 9c0-3.5 3-4.5 3-4.5s1 1 1 4.5" stroke-linecap="round"/>
+      <path d="M19 3l-1 2 2-1-1 2" stroke-linejoin="round"/> </svg>
+  </div>
+  <div class="sol-nav-text">
+    <strong>Researchers & Faculty</strong>
+    <span>Coaching & Impact</span>
+  </div>
+</button>
+
+<button class="sol-nav-btn" data-target="learners">
+  <div class="sol-icon-box bg-blue-soft">
+    <svg class="sol-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+    </svg>
+  </div>
+  <div class="sol-nav-text">
+    <strong>Learners</strong>
+    <span>Summer Schools</span>
+  </div>
+</button>
+
+
+
+
+
       </div>
 
-      <div class="solutions-grid">
+      <div class="solutions-content">
+        <div class="sol-tab-content active" id="universities">
+          <h3>Transforming Higher Education</h3>
+          <p class="sol-lead">Bridge the gap between academic theory and real-world entrepreneurial skills through Challenge-Based Learning.</p>
           
-          <a href="solutions-universities.html" class="solution-card border-top-secondary">
-              <div class="sol-icon-bg bg-blue-soft">
-                <svg class="sol-icon" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="currentColor"/></svg>
-              </div>
-              <h4>For Universities</h4>
-              <p>Strategic partner for capacity building. We integrate Challenge-Based Learning (CBL) into curricula and train faculty to run entrepreneurial activities.</p>
-              <span class="learn-more">Learn More &rarr;</span>
-          </a>
+          <div class="sol-features-grid">
+            <div class="sol-feature-card">
+              <span>👨‍🏫</span>
+              <h4>Faculty Training</h4>
+              <p>Capacity building & "Train-the-Trainer" for CBL success.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🏫</span>
+              <h4>Summer Schools</h4>
+              <p>EIT-labelled intense learning for students.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🧘</span>
+              <h4>Wellbeing & Mindfulness</h4>
+              <p>Integrating stress management into high-pressure programs.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="sol-primary-cta">Book a Program Strategy Call &rarr;</a>
+        </div>
 
-          <a href="solutions-business.html" class="solution-card border-top-primary">
-              <div class="sol-icon-bg bg-orange-soft">
-                <svg class="sol-icon" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="currentColor"/></svg>
-              </div>
-              <h4>Business & Industry</h4>
-              <p>Access top talent and fresh perspectives. We connect you with international university students to co-develop solutions for your business challenges.</p>
-              <span class="learn-more">Learn More &rarr;</span>
-          </a>
+        <div class="sol-tab-content" id="business">
+          <h3>Intrapreneurship & Innovation</h3>
+          <p class="sol-lead">Reinvigorate your team and solve real business challenges with fresh talent and expert coaching.</p>
+          <div class="sol-features-grid">
+            <div class="sol-feature-card">
+              <span>🚀</span>
+              <h4>Custom Challenges</h4>
+              <p>Turn real business problems into learning curricula.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🧠</span>
+              <h4>Lean Startup</h4>
+              <p>Apply Agile and Design Thinking to corporate R&D.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🍃</span>
+              <h4>Team Wellbeing</h4>
+              <p>Mindfulness programs to improve morale and reduce burnout.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="sol-primary-cta">Design Your Custom Challenge &rarr;</a>
+        </div>
 
-          <a href="solutions-public.html" class="solution-card border-top-accent">
-              <div class="sol-icon-bg bg-red-soft">
-                <svg class="sol-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.2v3.5c0 .7-.6 1.3-1.2 1.3H9.2c-.6 0-1.2-.6-1.2-1.2v-3.5c0-.7.6-1.3 1.2-1.3V9.5C9.2 8.1 10.6 7 12 7zm0 1c-.8 0-1.5.7-1.5 1.5V11h3V9.5c0-.8-.7-1.5-1.5-1.5z" fill="currentColor"/></svg>
-              </div>
-              <h4>Public Sector</h4>
-              <p>Drive regional development. We design challenge-based programs that address social and environmental goals through multi-stakeholder collaboration.</p>
-              <span class="learn-more">Learn More &rarr;</span>
-          </a>
+        <div class="sol-tab-content" id="public">
+          <h3>Regional Ecosystem Building</h3>
+          <p class="sol-lead">Stimulate development by connecting academia, industry, and government as "Network Weavers."</p>
+          <div class="sol-features-grid">
+            <div class="sol-feature-card">
+              <span>🤝</span>
+              <h4>Network Weaving</h4>
+              <p>Multi-stakeholder management and partnership building.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🌍</span>
+              <h4>EIT Projects</h4>
+              <p>Management of large-scale health and urban mobility programs.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🌱</span>
+              <h4>Societal Wellbeing</h4>
+              <p>Ensuring regional growth remains human-centric and sustainable.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="sol-primary-cta">Schedule an Ecosystem Consultation &rarr;</a>
+        </div>
 
-          <a href="solutions-universities.html#researchers" class="solution-card border-top-dark">
-              <div class="sol-icon-bg bg-grey-soft">
-                <svg class="sol-icon" viewBox="0 0 24 24"><path d="M7 17v-7l-3 3-1-1 5-5 5 5-1 1-3-3v7c0 1.1-.9 2-2 2s-2-.9-2-2zm12-4c-1.1 0-2 .9-2 2v5h-4v-5c0-1.1-.9-2-2-2s-2 .9-2 2v5c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-5c0-1.1-.9-2-2-2z" fill="currentColor"/></svg>
-              </div>
-              <h4>Researchers</h4>
-              <p>"Train the Trainer" programs. We motivate and upskill researchers to act towards the commercialization of their work and become innovation coaches.</p>
-              <span class="learn-more">Learn More &rarr;</span>
-          </a>
+        <div class="sol-tab-content" id="researchers">
+          <h3>From Lab to Market</h3>
+          <p class="sol-lead">Empowering researchers to act towards commercialization and become innovation coaches.</p>
+          <div class="sol-features-grid">
+            <div class="sol-feature-card">
+              <span>🧪</span>
+              <h4>Commercialization</h4>
+              <p>1-on-1 coaching to bridge the gap from research to startup.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🎓</span>
+              <h4>Peer Mentoring</h4>
+              <p>Learn from EIT Alumni and active University lecturers.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>✨</span>
+              <h4>Mental Clarity</h4>
+              <p>Mindfulness for high-performers to maintain research focus.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="sol-primary-cta">Learn About Researcher Coaching &rarr;</a>
+        </div>
 
+        <div class="sol-tab-content" id="learners">
+          <h3>Hands-on Impact Learning</h3>
+          <p class="sol-lead">Join international teams to solve real-world challenges in European innovation hubs.</p>
+          <div class="sol-features-grid">
+            <div class="sol-feature-card">
+              <span>✈️</span>
+              <h4>EU Locations</h4>
+              <p>Programs in Bratislava, Ljubljana, Budapest, and beyond.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🛠️</span>
+              <h4>Prototyping</h4>
+              <p>Work on Resilient Cities and Urban Mobility projects.</p>
+            </div>
+            <div class="sol-feature-card">
+              <span>🌊</span>
+              <h4>Mindful Growth</h4>
+              <p>Build an entrepreneurial mindset with emotional balance.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="sol-primary-cta">Apply for a 2025 Summer School &rarr;</a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <section class="section cbl-section">
     <div class="container split-container">
@@ -282,81 +409,47 @@
       </div>
   </section>
 
-  <section class="section projects-section">
-    <div class="container">
-      
-      <div class="section-header centered-header">
-        <h2>Impact in <span class="text-highlight">Action</span></h2>
-        <p>Flagship projects driving change across Europe.</p>
-      </div>
-      
-      <div class="project-slider-wrapper">
-        <button class="slider-btn prev-btn" id="prevProject">&#10094;</button>
+<section id="projects" class="project-showcase">
+  <div class="container">
+    <h2 class="impact-header">Impact in <span class="orange-text">Action</span></h2>
+    <p class="impact-subtext">
+      Flagship projects driving change across Europe through innovation and education.
+    </p>
+
+    <div class="carousel-container">
+      <button class="carousel-btn prev" id="prevProject">&#10094;</button>
+      <button class="carousel-btn next" id="nextProject">&#10095;</button>
+
+      <div class="carousel-track" id="projectTrack">
         
-        <div class="project-track-container">
-          <ul class="project-track" id="projectTrack">
-            
-            <li class="project-slide">
-              <div class="project-card split-layout">
-                <div class="card-image-side">
-                    <img src="assets/project2.jpeg" alt="EIT Urban Mobility">
-                </div>
-                <div class="card-content-side">
-                    <span class="card-badge">Urban Mobility</span>
-                    <h3>EIT Urban Mobility</h3>
-                    <p class="project-desc">Transforming city living through smart mobility solutions. We partnered with top technical universities to create a summer school that redefined urban transport.</p>
-                    <div class="partner-list">
-                        <span><strong>Partners:</strong> Riga Tech, Univ. Tartu</span>
-                    </div>
-                    <a href="#" class="btn-text-link">Read Case Study &rarr;</a>
-                </div>
-              </div>
-            </li>
-
-            <li class="project-slide">
-              <div class="project-card split-layout">
-                <div class="card-image-side">
-                    <img src="assets/project1.jpeg" alt="Resilient Cities">
-                </div>
-                <div class="card-content-side">
-                  <span class="card-badge">Resilient Cities</span>
-                  <h3>Resilient Cities</h3>
-                  <p class="project-desc">Building infrastructure that withstands the challenges of tomorrow. A deep-dive workshop connecting civil engineers with city planners.</p>
-                  <div class="partner-list">
-                        <span><strong>Partners:</strong> STUBA, Univ. Ljubljana</span>
-                  </div>
-                  <a href="#" class="btn-text-link">Read Case Study &rarr;</a>
-                </div>
-              </div>
-            </li>
-
-            <li class="project-slide">
-              <div class="project-card split-layout">
-                <div class="card-image-side">
-                    <img src="assets/project3.jpeg" alt="Health Innovation">
-                </div>
-                <div class="card-content-side">
-                  <span class="card-badge">Health Innovation</span>
-                  <h3>Health Ecosystems</h3>
-                  <p class="project-desc">Bridging the gap between medical research and patient care through entrepreneurship and rapid prototyping.</p>
-                  <div class="partner-list">
-                        <span><strong>Partners:</strong> TU Delft, EIT Health</span>
-                  </div>
-                  <a href="#" class="btn-text-link">Read Case Study &rarr;</a>
-                </div>
-              </div>
-            </li>
-
-          </ul>
+        <div class="project-slide">
+          <img src="assets/project1.jpeg" alt="Project 1">
+          <div class="slide-content">
+            <h4>Case Study: Improving Entrepreneurial Health Ecosystems</h4>
+            <p class="partners-text">Partners: TU Delft, EIT Health</p>
+            <a href="#" class="learn-more-link">Learn More →</a>
+          </div>
         </div>
-        <button class="slider-btn next-btn" id="nextProject">&#10095;</button>
-      </div>
 
-      <div class="center-btn-wrapper">
-        <a href="projects.html" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">View All Projects</a>
+        <div class="project-slide">
+          <img src="assets/project2.jpeg" alt="Project 2">
+          <div class="slide-content">
+            <h4>Case Study: Urban Mobility Innovation</h4>
+            <p class="partners-text">Partners: Riga Tech University</p>
+            <a href="#" class="learn-more-link">Learn More →</a>
+          </div>
+        </div>
+
       </div>
     </div>
-  </section>
+
+    <div class="center-cta">
+      <a href="projects.html" class="btn btn-orange-filled">See All Our Projects</a>
+    </div>
+  </div>
+</section>
+
+
 
   <section class="final-cta-section">
     <div class="container footer-cta">
@@ -364,8 +457,8 @@
       <p>Partner with us to co-design a challenge, upskill your researchers, or launch a world-class innovation program.</p>
       
       <div class="cta-btn-group">
-        <a href="contact.html" class="btn btn-primary">Book a Discovery Call</a>
-        <a href="#" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">Download Overview</a>
+        <a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary">Book a Discovery Call</a>
+        <!-- <a href="#" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">Download Overview</a> -->
       </div>
     </div>
   </section>
