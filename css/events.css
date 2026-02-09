@@ -2,35 +2,41 @@
    EVENTS PAGE - CLEAN & STRUCTURED
    ========================================= */
 
-.page-spacer { height: 100px; } /* Spacer for fixed header */
+/* 1. SPACER: Just enough to clear the fixed header (approx 70px) */
+.page-spacer { height: 75px; } 
 
-/* --- 1. INTRO SECTION (Catchy Text) --- */
+/* --- 2. INTRO SECTION (Tightened Up) --- */
 .events-intro {
     text-align: center;
-    padding: 60px 20px 40px;
+    /* UPDATED: Drastically reduced padding to pull content up */
+    padding: 20px 20px 10px; 
     max-width: 900px;
     margin: 0 auto;
 }
 
 .events-intro h1 {
-    font-size: 3rem;
+    font-size: 2.2rem; /* Slightly smaller for compactness */
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin-bottom: 8px; /* Minimal gap */
     color: var(--dark);
 }
 
 .events-intro .intro-lead {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto 15px; /* Reduced bottom margin */
 }
 
-/* --- 2. TOP DASHBOARD (Featured + Calendar) --- */
+/* --- 3. TOP DASHBOARD (The Featured Section) --- */
 .top-dashboard {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* 2/3 for Featured, 1/3 for Calendar */
-    gap: 30px;
-    margin-bottom: 60px;
+    grid-template-columns: 2fr 1fr; 
+    gap: 25px;
+    margin-bottom: 50px;
+    /* UPDATED: Negative margin pulls the whole section UP towards the text */
+    margin-top: 10px; 
 }
 
 /* Featured Spotlight (Bali) */
@@ -41,11 +47,12 @@
     display: flex;
     color: white;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    min-height: 380px; 
 }
 
 .spotlight-content {
-    flex: 1;
-    padding: 40px;
+    flex: 1.2; 
+    padding: 35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,25 +61,26 @@
 .spotlight-badge {
     background: var(--primary);
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: 5px 12px;
+    border-radius: 50px;
     align-self: flex-start;
     margin-bottom: 15px;
+    letter-spacing: 0.5px;
 }
 
 .spotlight-content h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-    line-height: 1.2;
-    color: #ffffff !important; /* Forces white text */
+    line-height: 1.1;
+    color: #ffffff !important;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .spotlight-meta {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #94a3b8;
     margin-bottom: 20px;
     display: flex;
@@ -81,19 +89,20 @@
 }
 
 .spotlight-meta span {
-    color: #FFB74D !important; /* Makes date/loc pop in orange */
+    color: #FFB74D !important;
 }
 
 .spotlight-content p {
     color: #cbd5e1;
-    margin-bottom: 30px;
-    line-height: 1.6;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
 .spotlight-image {
     flex: 1;
     position: relative;
-    min-height: 300px;
+    min-height: 100%;
 }
 .spotlight-image img {
     width: 100%;
@@ -107,7 +116,9 @@
     border: 1px solid #e2e8f0;
     border-radius: 16px;
     padding: 25px;
-    height: 100%; /* Match height */
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
 }
 
 .calendar-nav {
@@ -116,47 +127,80 @@
     align-items: center;
     margin-bottom: 15px;
 }
-.calendar-nav h4 { margin: 0; color: var(--dark); font-size: 1.1rem; }
+.calendar-nav h4 { margin: 0; color: var(--dark); font-size: 1rem; font-weight: 700; }
 .cal-nav-btn {
-    background: none; border: 1px solid #e5e7eb; border-radius: 4px;
-    width: 28px; height: 28px; cursor: pointer;
+    background: none; border: 1px solid #e5e5e5; border-radius: 4px;
+    width: 24px; height: 24px; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
 }
 .cal-nav-btn:hover { background: var(--bg-blue-soft); color: var(--primary); border-color: var(--primary); }
 
-.mini-calendar { font-size: 0.9rem; }
+.mini-calendar { font-size: 0.85rem; margin-bottom: auto; }
 .cal-header, .cal-grid {
-    display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 5px;
+    display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 4px;
 }
-.cal-header span { font-weight: 700; color: #64748b; padding: 10px 0; font-size: 0.8rem; }
-.cal-grid span { padding: 8px 0; border-radius: 50%; cursor: pointer; }
+.cal-header span { font-weight: 700; color: #94a3b8; padding: 8px 0; font-size: 0.75rem; }
+.cal-grid span { padding: 6px 0; border-radius: 50%; cursor: pointer; transition: 0.2s; }
 .cal-grid span:hover { background: var(--bg-blue-soft); color: var(--primary); }
 .cal-grid span.has-event { font-weight: 700; color: var(--primary); background: #fff7ed; }
 .cal-grid span.active { background: var(--primary); color: white; }
-.cal-grid span.text-muted { color: #e2e8f0; pointer-events: none; }
+.cal-grid span.text-muted { color: #f1f5f9; pointer-events: none; }
+
+/* Daily Spark Quote */
+.daily-spark-card {
+    margin-top: 25px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.spark-icon {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.spark-text {
+    font-family: 'Caveat', cursive; 
+    font-size: 1.1rem;
+    color: var(--dark);
+    line-height: 1.4;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.spark-author {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 
 /* --- SECTION 3: DIRECTORY --- */
 .directory-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: left;
 }
-.directory-header h3 { font-size: 1.8rem; color: var(--dark); margin-bottom: 15px; }
-.directory-header p { color: #64748b; margin-bottom: 20px; }
 
 /* Filter Pills */
 .filter-bar {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .filter-btn {
     background: white;
     border: 1px solid #e2e8f0;
-    padding: 8px 24px;
+    padding: 6px 20px;
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-light);
     cursor: pointer;
@@ -179,7 +223,7 @@
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 Columns */
-    gap: 30px;
+    gap: 25px;
     padding-bottom: 80px;
 }
 
@@ -205,7 +249,6 @@
     background: #f1f5f9;
 }
 .card-img-top img { width: 100%; height: 100%; object-fit: cover; }
-.grayscale-img img { filter: grayscale(100%); opacity: 0.7; }
 
 /* Date Badge */
 .date-tag {
@@ -220,10 +263,22 @@
 }
 .d-day { display: block; font-size: 1.1rem; font-weight: 800; color: var(--primary); line-height: 1; }
 .d-month { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
-.past-tag { background: #e2e8f0; color: #64748b; font-weight: 700; font-size: 0.8rem; padding: 8px 12px; }
+
+/* UPDATED PAST TAG: Clean Technical Label */
+.past-tag { 
+    background: #f8fafc; /* Very light gray */
+    color: #475569;      /* Slate dark gray */
+    border: 1px solid #cbd5e1; /* Subtle border */
+    font-weight: 700; 
+    font-size: 0.7rem; 
+    padding: 6px 10px; 
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Slight lift */
+}
 
 .card-body {
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -239,16 +294,16 @@
 }
 
 .grid-card h4 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--dark);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     line-height: 1.3;
 }
 
 .c-loc {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #64748b;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .btn-card {
@@ -258,7 +313,7 @@
     text-align: center;
     padding: 10px;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     transition: 0.2s;
     text-decoration: none;
@@ -283,6 +338,8 @@
     .spotlight-image { height: 200px; }
     .cards-grid { grid-template-columns: 1fr; }
     .events-intro h1 { font-size: 2.2rem; }
+    
+    .daily-spark-card { display: none; } 
 }
 
 /* Fix visibility in the dark navy spotlight */
@@ -296,7 +353,6 @@
     font-weight: 700;
 }
 
-/* Ensure event photos fill the card correctly */
 .card-img-top img {
     width: 100%;
     height: 100%;
