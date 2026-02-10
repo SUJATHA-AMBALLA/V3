@@ -3,127 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Scrapbook | Kimitisik</title>
+  <title>Budapest Urban Mobility Recap | Kimitisik</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #f39221; --dark: #14213d; --paper: #fdfbf7; }
+    :root { 
+        --primary: #f39221; 
+        --primary-light: #fff7ed;
+        --blue: #2563eb; 
+        --dark: #14213d; 
+        --paper: #fdfbf7; 
+        --green: #00a896;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #e2e8f0; color: #333; overflow-x: hidden; }
 
-    /* --- 1. HERO (Keep it simple) --- */
+    /* --- HERO --- */
     .hero-header {
         height: 50vh;
-        background-image: url('assets/project3.jpeg'); /* Event Image */
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1565426873118-a17ed65d7429?auto=format&fit=crop&q=80&w=1600'); 
         background-size: cover;
-        background-position: center;
+        background-position: center 60%;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
     }
-    .hero-header::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
-    
-    .hero-title {
-        position: relative; z-index: 2; color: white; text-align: center;
-        text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
+    .hero-title { position: relative; z-index: 2; color: white; text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     .hero-title h1 { font-family: 'Montserrat'; font-size: 3rem; margin-bottom: 10px; }
-    .hero-title .badge { background: var(--primary); padding: 5px 15px; border-radius: 20px; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; }
+    .hero-title .badge { background: var(--green); padding: 5px 15px; border-radius: 20px; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
 
-    /* --- 2. THE BOOK CONTAINER --- */
-    .table-surface {
-        padding: 60px 20px;
-        background: #cbd5e1; /* Simulates a table surface */
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-    }
-
-    .book {
-        display: flex;
-        width: 100%;
-        max-width: 1100px;
-        background: var(--paper);
-        box-shadow: 
-            0 20px 50px rgba(0,0,0,0.3), /* Deep shadow */
-            inset 0 0 0 1px #e5e5e5; /* Paper edge */
-        border-radius: 6px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* The Center Spine Effect */
-    .book::before {
-        content: '';
-        position: absolute;
-        left: 50%; top: 0; bottom: 0; width: 40px;
-        background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.05));
-        transform: translateX(-50%);
-        z-index: 10;
-        pointer-events: none;
-    }
+    /* --- BOOK --- */
+    .table-surface { padding: 60px 20px; background: #cbd5e1; min-height: 100vh; display: flex; justify-content: center; }
+    .book { display: flex; width: 100%; max-width: 1100px; background: var(--paper); box-shadow: 0 20px 50px rgba(0,0,0,0.3), inset 0 0 0 1px #e5e5e5; border-radius: 6px; overflow: hidden; }
 
     /* PAGES */
-    .page {
-        flex: 1;
-        padding: 60px;
-        position: relative;
-    }
-
-    /* Left Page: Text */
+    .page { flex: 1; padding: 60px; position: relative; }
     .page-left { border-right: 1px solid #eee; }
     
-    .handwritten-note {
-        font-family: 'Caveat', cursive; /* Cute handwriting font */
-        color: var(--primary);
-        font-size: 1.5rem;
-        transform: rotate(-2deg);
-        margin-bottom: 20px;
-        display: block;
-    }
+    .handwritten-note { font-family: 'Caveat', cursive; color: var(--primary); font-size: 1.5rem; transform: rotate(-2deg); margin-bottom: 15px; display: block; }
+    h2 { font-family: 'Montserrat'; font-size: 1.8rem; color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
+    h3 { font-family: 'Montserrat'; font-size: 1.1rem; color: var(--dark); margin-top: 25px; margin-bottom: 10px; }
+    p { margin-bottom: 15px; line-height: 1.7; color: #4b5563; font-size: 0.95rem; }
 
-    h2 { font-family: 'Montserrat'; font-size: 2rem; color: var(--dark); margin-bottom: 20px; }
-    p { margin-bottom: 20px; line-height: 1.8; color: #4b5563; }
+    .winner-box { background: #fff8e1; border: 2px dashed var(--primary); padding: 25px 20px 20px 20px; border-radius: 8px; margin: 25px 0; position: relative; }
+    .winner-box::after { content: '🏆'; font-size: 2rem; position: absolute; top: -22px; right: 15px; background: #fff8e1; padding: 0 10px; transform: rotate(10deg); }
+    .winner-title { color: var(--dark); font-weight: 700; font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 5px; }
+
+    .eit-stamp { border: 3px double var(--green); color: var(--green); display: inline-block; padding: 5px 15px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; transform: rotate(-3deg); margin-top: 15px; border-radius: 4px; opacity: 0.9; }
+    .checklist { list-style: none; margin-bottom: 20px; }
+    .checklist li { margin-bottom: 8px; padding-left: 25px; position: relative; font-size: 0.9rem; color: #4b5563; }
+    .checklist li::before { content: '✓'; color: var(--green); position: absolute; left: 0; font-weight: bold; }
     
-    .btn-back {
-        display: inline-block; margin-top: 30px; 
-        color: var(--dark); text-decoration: none; font-weight: 700;
-        border-bottom: 2px solid var(--primary);
-    }
+    .social-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; color: #0077b5; font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+    .btn-back { display: inline-block; margin-top: 30px; color: var(--dark); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--primary); font-size: 0.9rem; }
 
-    /* Right Page: Gallery Grid */
-    .page-right { background: #faf8f5; }
+    /* --- RIGHT PAGE: ALBUM --- */
+    .page-right { background: #faf8f5; background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px); background-size: 20px 20px; }
     
-    .polaroid-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        transform: rotate(1deg); /* Slight tilt for realism */
-    }
-
-    .polaroid {
-        background: white;
-        padding: 10px 10px 30px 10px; /* Extra bottom padding for "Polaroid" look */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        transform: rotate(var(--tilt));
-        transition: transform 0.3s ease;
-    }
-    .polaroid:hover { transform: scale(1.05) rotate(0deg); z-index: 5; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .album-title { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--dark); margin-bottom: 25px; text-align: center; transform: rotate(-2deg); }
     
-    .polaroid img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border: 1px solid #eee;
-    }
+    .polaroid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding-bottom: 20px; }
+    
+    .polaroid { background: white; padding: 8px 8px 25px 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; transform: rotate(var(--tilt)); }
+    .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 5 !important; }
+    .polaroid img { width: 100%; height: 110px; object-fit: cover; border: 1px solid #eee; }
+    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 0.9rem; text-align: center; margin-top: 5px; color: #64748b; }
 
-    /* Mobile Responsive */
     @media (max-width: 900px) {
         .book { flex-direction: column; }
-        .book::before { display: none; } /* Hide spine on mobile */
-        .page-left { border-right: none; border-bottom: 1px dashed #ccc; }
+        .page-left { border-right: none; border-bottom: 1px dashed #ccc; padding: 40px 25px; }
+        .page-right { padding: 40px 25px; }
         .hero-header { height: 40vh; }
-        .hero-title h1 { font-size: 2rem; }
     }
   </style>
 </head>
@@ -131,8 +81,8 @@
 
   <header class="hero-header">
     <div class="hero-title">
-      <span class="badge">Summer School Recap</span>
-      <h1>Budapest 2025</h1>
+      <span class="badge">EIT Urban Mobility</span>
+      <h1>Budapest Summer School</h1>
     </div>
   </header>
 
@@ -140,34 +90,68 @@
     <div class="book">
       
       <div class="page page-left">
-        <span class="handwritten-note">July 20-25 • What a week!</span>
-        <h2>Urban Mobility Challenge</h2>
-        <p>40 students came together in Budapest to solve real traffic and community problems. It was intense, fun, and incredibly productive.</p>
+        <span class="handwritten-note">July 20–25, 2025 • 40 Students</span>
+        <h2>Innovation on the Danube</h2>
         
-        <p><strong>The Big Win:</strong> Team Orbit designed a night-time tram delivery system. Imagine trams carrying parcels while the city sleeps! 🚋📦</p>
+        <p>The summer sun in Budapest set the stage for five unforgettable days. We brought together 40 students to look at the city not just as tourists, but as innovators.</p>
         
-        <p>We also saw walking apps and rural ride-sharing ideas. The energy was unmatched.</p>
+        <p>From the busy tram lines to the quiet rural roads of Tárnok, the goal was simple: to rethink how communities move and connect. Supported by BME and our partners, we turned the city into our classroom.</p>
+        
+        <div class="winner-box">
+            <span class="winner-title">1st Place: Team Orbit</span>
+            <p style="margin-bottom:0; font-size: 0.95rem;">
+                Designed a night-time tram-based parcel delivery system using underutilized lines and smart lockers to reduce congestion.
+            </p>
+        </div>
 
-        <a href="events.html" class="btn-back">← Close Scrapbook</a>
+        <h3>Honorable Mentions</h3>
+        <ul class="checklist" style="margin-bottom: 10px;">
+            <li><strong>Team MEGA-J:</strong> Reward-based walking app for pedestrian data.</li>
+            <li><strong>Team Hitcher:</strong> Community ride-sharing for rural areas.</li>
+        </ul>
+
+        <div class="eit-stamp">Co-funded by EIT Urban Mobility</div>
+        <br>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7356582670547476480/" target="_blank" class="social-link">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H3.36V13.394h1.583zM3.97 5.937c.596 0 1.025-.451 1.025-1.02 0-.58-.43-1.02-1.025-1.02-.595 0-1.024.44-1.024 1.02 0 .569.43 1.02 1.024 1.02zM13.394 13.394V8.59c0-2.535-1.354-3.72-3.174-3.72-1.462 0-2.115.803-2.48 1.347h-.025V6.169h-1.582c.02.447 0 7.225 0 7.225h1.582V9.364c0-.216.015-.432.078-.586.173-.432.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.86h1.582z"/></svg>
+            See full highlights on LinkedIn
+        </a>
+        <br>
+        <a href="events.html" class="btn-back">← Back to Events</a>
       </div>
 
       <div class="page page-right">
+        <div class="album-title">Summer Memories</div>
         <div class="polaroid-grid">
           
-          <div class="polaroid" style="--tilt: -3deg;">
-            <img src="assets/project1.jpeg" alt="Workshop">
+          <div class="polaroid" style="--tilt: -2deg;">
+            <img src="assets/project3.jpeg" alt="Team Presentation">
+            <div class="polaroid-caption">The Pitch Finals</div>
           </div>
           
-          <div class="polaroid" style="--tilt: 2deg;">
-            <img src="assets/project2.jpeg" alt="Team">
+          <div class="polaroid" style="--tilt: 3deg;">
+            <img src="https://images.unsplash.com/photo-1517737812598-1a43d0ef2a60?auto=format&fit=crop&q=80&w=600" alt="Budapest Trams">
+            <div class="polaroid-caption">Budapest Trams</div>
           </div>
 
           <div class="polaroid" style="--tilt: -1deg;">
-            <img src="assets/project3.jpeg" alt="Tram">
+            <img src="assets/project1.jpeg" alt="Students Working">
+            <div class="polaroid-caption">Ideation Phase</div>
           </div>
 
           <div class="polaroid" style="--tilt: 4deg;">
-            <img src="assets/workshop1.jpeg" alt="Fun">
+            <img src="https://images.unsplash.com/photo-1565426873118-a17ed65d7429?auto=format&fit=crop&q=80&w=600" alt="BME University">
+            <div class="polaroid-caption">Hosted at BME</div>
+          </div>
+
+          <div class="polaroid" style="--tilt: -3deg;">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=600" alt="Workshops">
+            <div class="polaroid-caption">Workshops</div>
+          </div>
+
+          <div class="polaroid" style="--tilt: 2deg;">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=600" alt="Awards">
+            <div class="polaroid-caption">Winners</div>
           </div>
 
         </div>
