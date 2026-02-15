@@ -4,77 +4,143 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YWE Tour Diary | Kimitisik</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
   <style>
     :root { 
         --primary: #f39221; 
         --primary-light: #fff7ed;
-        --blue: #2563eb; 
-        --dark: #14213d; 
+        --dark: #334155; 
         --paper: #fdfbf7; 
+        --bg-surface: #f3f4f6;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #e2e8f0; color: #333; overflow-x: hidden; }
 
-    /* --- HERO --- */
+    .header .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+    /* HERO */
     .hero-header {
-        height: 50vh;
-        background-image: linear-gradient(rgba(20, 33, 61, 0.7), rgba(20, 33, 61, 0.5)), url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1600'); 
-        background-size: cover;
-        background-position: center 20%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+        height: 65vh; 
+        background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+        display: flex; flex-direction: column; align-items: center;
+        padding-top: 100px; position: relative; overflow: hidden; text-align: center;
     }
-    .hero-title { position: relative; z-index: 2; color: white; text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-    .hero-title h1 { font-family: 'Montserrat'; font-size: 3.5rem; margin-bottom: 5px; letter-spacing: -1px; }
-    .hero-title .subtitle { font-family: 'Caveat', cursive; font-size: 1.5rem; color: #f39221; letter-spacing: 1px; }
+    .hero-header::before {
+        content: ''; position: absolute; width: 500px; height: 500px;
+        background: rgba(243, 146, 33, 0.05); border-radius: 50%;
+        top: -200px; left: -100px;
+    }
+    .hero-header::after {
+        content: ''; position: absolute; width: 600px; height: 600px;
+        background: rgba(255, 255, 255, 0.4); border-radius: 50%;
+        bottom: -200px; right: -150px; filter: blur(40px);
+    }
 
-    /* --- BOOK --- */
-    .table-surface { padding: 60px 20px; background: #cbd5e1; min-height: 100vh; display: flex; justify-content: center; }
-    .book { display: flex; width: 100%; max-width: 1100px; background: var(--paper); box-shadow: 0 20px 50px rgba(0,0,0,0.3), inset 0 0 0 1px #e5e5e5; border-radius: 6px; overflow: hidden; }
+    /* TYPOGRAPHY */
+    .hero-title { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+    .hero-title h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; font-weight: 600; color: var(--dark); margin: 0 0 25px 0; line-height: 1.2; }
+    .hero-title .badge { 
+        background: var(--primary); color: white; padding: 8px 24px; border-radius: 30px; 
+        text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px;
+        display: inline-block; box-shadow: 0 10px 20px rgba(243, 146, 33, 0.2); margin-bottom: 80px; 
+    }
+
+    /* BOOK */
+    .table-surface { background: var(--bg-surface); padding: 0 20px 100px 20px; display: flex; justify-content: center; position: relative; }
+    .book { 
+        display: flex; width: 100%; max-width: 1150px; background: var(--paper); 
+        box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.02); 
+        border-radius: 12px; overflow: hidden; margin-top: -120px; z-index: 10; position: relative;
+    }
+    .book::before {
+        content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 60px; transform: translateX(-50%);
+        background: linear-gradient(to right, rgba(0,0,0,0.02), rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.02));
+        z-index: 20; pointer-events: none;
+    }
 
     /* PAGES */
-    .page { flex: 1; padding: 50px; position: relative; }
-    .page-left { border-right: 1px solid #eee; }
-    
-    h2 { font-family: 'Montserrat'; font-size: 1.5rem; color: var(--dark); margin-bottom: 15px; border-bottom: 2px solid var(--primary-light); padding-bottom: 10px; display: inline-block; }
-    p { margin-bottom: 18px; line-height: 1.6; color: #4b5563; font-size: 0.95rem; }
-    
-    /* Badges */
-    .tour-log-title { font-family: 'Montserrat'; font-size: 0.85rem; text-transform: uppercase; color: #94a3b8; margin-top: 30px; margin-bottom: 10px; letter-spacing: 1px; font-weight: 700; }
+    .page { flex: 1; padding: 60px; position: relative; }
+    .page-left { border-right: 1px solid rgba(0,0,0,0.06); }
+    .handwritten-note { font-family: 'Caveat', cursive; color: var(--primary); font-size: 1.6rem; transform: rotate(-2deg); margin-bottom: 20px; display: block; }
+    h2 { font-family: 'Montserrat'; font-size: 1.8rem; color: var(--dark); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid var(--primary-light); display: inline-block; }
+    p { margin-bottom: 18px; line-height: 1.7; color: #475569; font-size: 1rem; }
+
+    /* Tour Badges */
+    .tour-log-title { font-family: 'Montserrat'; font-size: 0.85rem; text-transform: uppercase; color: #94a3b8; margin-top: 30px; margin-bottom: 15px; letter-spacing: 1px; font-weight: 700; }
     .tour-badges { display: flex; flex-wrap: wrap; gap: 10px; }
-    .badge-link { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--primary-light); padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--dark); text-decoration: none; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
-    .badge-link:hover { background: var(--primary); color: white; transform: translateY(-2px); }
-    .badge-link svg { width: 12px; height: 12px; }
+    .badge-link { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--primary-light); padding: 8px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--dark); text-decoration: none; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
+    .badge-link:hover { background: var(--primary); color: white; transform: translateY(-2px); border-color: var(--primary); }
 
     .btn-back { display: inline-block; margin-top: 30px; color: var(--dark); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--primary); font-size: 0.9rem; }
 
-    /* --- RIGHT PAGE: ALBUM --- */
-    .page-right { background: #faf8f5; background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px); background-size: 20px 20px; }
+    /* RIGHT PAGE */
+    .page-right { 
+        background: #faf8f5; 
+        background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+        background-size: 30px 30px; 
+    }
+    .album-title { font-family: 'Caveat', cursive; font-size: 2.2rem; color: var(--dark); margin-bottom: 30px; text-align: center; transform: rotate(-2deg); }
     
-    .album-title { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--dark); margin-bottom: 25px; text-align: center; transform: rotate(-2deg); }
     .polaroid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding-bottom: 20px; }
-    .polaroid { background: white; padding: 8px 8px 25px 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; transform: rotate(var(--tilt)); }
-    .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10 !important; }
-    .polaroid img { width: 100%; height: 110px; object-fit: cover; }
-    .polaroid-caption { font-family: 'Caveat', cursive; text-align: center; margin-top: 5px; color: #64748b; font-size: 0.9rem; }
+    .polaroid { 
+        background: white; padding: 10px 10px 35px 10px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s; transform: rotate(var(--tilt)); 
+    }
+    .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 30 !important; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    
+    /* OPTIMIZED IMAGES */
+    .polaroid img { width: 100%; height: 160px; object-fit: cover; border: 1px solid #eee; }
+    
+    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 1.1rem; text-align: center; margin-top: 8px; color: #64748b; }
 
     @media (max-width: 900px) {
-        .book { flex-direction: column; }
+        .hero-header { height: auto; padding: 100px 20px 60px 20px; }
+        .book { flex-direction: column; margin-top: 0; }
+        .book::before { display: none; }
         .page-left { border-right: none; border-bottom: 1px dashed #ccc; padding: 40px 25px; }
-        .page-right { padding: 40px 25px; min-height: 600px; }
-        .hero-header { height: 40vh; }
+        .page-right { padding: 40px 25px; }
+        .hero-title h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo"><img src="assets/mainlogo.png" alt="Kimitisik Logo"></a>
+      <nav class="nav-menu">
+        <div class="mobile-menu-header"><div></div><span class="close-menu">&times;</span></div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li class="dropdown"><span class="nav-item dropdown-toggle">Solutions ▾</span>
+            <ul class="dropdown-menu">
+              <li><a href="solutions-universities.html">For Universities</a></li>
+              <li><a href="solutions-business.html">For Business</a></li>
+              <li><a href="solutions-public.html">Public Sector</a></li>
+            </ul>
+          </li>
+          <li><a href="events.html" class="nav-item active">Events</a></li>
+          <li><a href="about.html" class="nav-item">About Us</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+          <li class="mobile-cta-item"><a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary full-width">Book Discovery Call</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary-header">Book Discovery Call</a>
+        <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+      </div>
+    </div>
+    <div class="menu-overlay"></div>
+  </header>
+
+  <div class="page-spacer"></div>
+
   <header class="hero-header">
     <div class="hero-title">
       <h1>The YWE Tour</h1>
-      <span class="subtitle">Empowering the Next Generation</span>
+      <span class="badge">Empowering Future Engineers</span>
     </div>
   </header>
 
@@ -82,13 +148,12 @@
     <div class="book">
       
       <div class="page page-left">
+        <span class="handwritten-note">5 Days • 5 Cities • 1 Mission</span>
         <h2>Closing the Gender Gap</h2>
         
         <p>It began with a simple mission: to show high school girls that technology, engineering, and entrepreneurship are not distant worlds—they are spaces where they belong.</p>
         
-        <p>Across five intense days, we traveled from <strong>Nyírbátor</strong> to <strong>Veszprém</strong>, partnering with the "Future Female Engineers" initiative (EJMSZ). At every stop—whether inside the hangars of <em>Diehl Aviation</em> or the R&D centers of <em>Knorr-Bremse</em> and <em>E.ON</em>—students met inspiring female engineers who shared their personal journeys of resilience.</p>
-
-        <p>The tour culminated in <strong>Székesfehérvár</strong>, where participants pitched directly to Deputy Mayor Attila Mészáros, proving that their ideas have the power to shape future cities.</p>
+        <p>Across five intense days, we traveled from <strong>Nyírbátor</strong> to <strong>Veszprém</strong>, partnering with the "Future Female Engineers" initiative (EJMSZ). At every stop—whether inside the hangars of <em>Diehl Aviation</em> or the R&D centers of <em>Knorr-Bremse</em> and <em>E.ON</em>—students met inspiring female engineers who shared their personal journeys.</p>
 
         <div class="tour-log-title">Explore the Tour Stops (LinkedIn)</div>
         <div class="tour-badges">
@@ -106,64 +171,32 @@
         <div class="album-title">Tour Highlights</div>
         <div class="polaroid-grid">
             
-            <!-- <div class="polaroid" style="--tilt: -3deg;">
-                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600" alt="Mentorship">
-                <div class="polaroid-caption">Mentorship</div>
-            </div> -->
-
-             <div class="polaroid" style="--tilt: -3deg;">
-                <img src="assets/YWE1.png" alt="Mentorship">
-                <div class="polaroid-caption">Mentorship</div>
-            </div>
-
-            <!-- <div class="polaroid" style="--tilt: 4deg;">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600" alt="Innovation">
-                <div class="polaroid-caption">Engineering</div>
-            </div> -->
-               <div class="polaroid" style="--tilt: -1deg;">
-                <img src="assets/YWE5.png" alt="Collaboration">
-                <div class="polaroid-caption">Collaboration</div>
-            </div>
-
-          
-            <!-- <div class="polaroid" style="--tilt: -2deg;">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600" alt="Teamwork">
-                <div class="polaroid-caption">Pitching</div>
-            </div> -->
-
-             <div class="polaroid" style="--tilt: -2deg;">
-                <img src="assets/YWE3.png" alt="Teamwork">
-                <div class="polaroid-caption">Pitching</div>
-            </div>
-<!-- 
-             <div class="polaroid" style="--tilt: 2deg;">
-                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600" alt="Impact">
-                <div class="polaroid-caption">Future Leaders</div>
-            </div> -->
-
             <div class="polaroid" style="--tilt: 2deg;">
-                <img src="assets/YWE4.png" alt="Impact">
+                <img src="assets/YWE4.png" alt="Impact" loading="lazy" decoding="async">
                 <div class="polaroid-caption">Future Leaders</div>
             </div>
+            
 
-            <!-- <div class="polaroid" style="--tilt: -1deg;">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600" alt="Collaboration">
-                <div class="polaroid-caption">Collaboration</div>
-            </div> -->
+              <div class="polaroid" style="--tilt: -3deg;">
+                <img src="assets/YWE1.png" alt="Mentorship" loading="lazy" decoding="async">
+                <div class="polaroid-caption">Mentorship</div>
+            </div>          
 
-            <div class="polaroid" style="--tilt: 4deg;">
-                <img src="assets/YWE2.png" alt="Innovation">
-                <div class="polaroid-caption">Engineering</div>
+           <div class="polaroid" style="--tilt: -2deg;">
+                <img src="assets/YWE3.png" alt="Teamwork" loading="lazy" decoding="async">
+                <div class="polaroid-caption">Pitching</div>
             </div>
 
-
-             <!-- <div class="polaroid" style="--tilt: 3deg;">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=600" alt="Community">
-                <div class="polaroid-caption">Community</div>
-            </div> -->
-
+            <div class="polaroid" style="--tilt: -1deg;">
+                <img src="assets/YWE5.jpg" alt="Collaboration" loading="lazy" decoding="async">
+                <div class="polaroid-caption">Collaboration</div>
+            </div>
+             <div class="polaroid" style="--tilt: 4deg;">
+                <img src="assets/YWE2.png" alt="Innovation" loading="lazy" decoding="async">
+                <div class="polaroid-caption">Engineering</div>
+            </div>
              <div class="polaroid" style="--tilt: 3deg;">
-                <img src="assets/YWE6.png" alt="Community">
+                <img src="assets/YWE6.png" alt="Community" loading="lazy" decoding="async">
                 <div class="polaroid-caption">Community</div>
             </div>
 
@@ -173,5 +206,6 @@
     </div>
   </section>
 
+  <script src="js/script.js"></script>
 </body>
 </html>

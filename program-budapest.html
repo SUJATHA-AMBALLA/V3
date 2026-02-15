@@ -4,85 +4,271 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Budapest Urban Mobility Recap | Kimitisik</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+
   <style>
     :root { 
+        /* BRAND COLORS */
         --primary: #f39221; 
         --primary-light: #fff7ed;
-        --blue: #2563eb; 
-        --dark: #14213d; 
+        --dark: #334155; 
         --paper: #fdfbf7; 
-        --green: #00a896;
+        --bg-surface: #f3f4f6;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #e2e8f0; color: #333; overflow-x: hidden; }
 
-    /* --- HERO --- */
+    /* --- NAV CONTAINER --- */
+    .header .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    /* --- HERO HEADER --- */
     .hero-header {
-        height: 50vh;
-        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1565426873118-a17ed65d7429?auto=format&fit=crop&q=80&w=1600'); 
-        background-size: cover;
-        background-position: center 60%;
+        height: 65vh; 
+        background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
         display: flex;
+        flex-direction: column;
         align-items: center;
+        padding-top: 100px; 
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    /* 1. ORANGE CIRCLE */
+    .hero-header::before {
+        content: ''; 
+        position: absolute; 
+        width: 500px; 
+        height: 500px;
+        background: rgba(243, 146, 33, 0.05);
+        border-radius: 50%;
+        top: -200px; 
+        left: -100px;
+        z-index: 1;
+    }
+    
+    /* 2. WHITE CIRCLE */
+    .hero-header::after {
+        content: ''; 
+        position: absolute; 
+        width: 600px; 
+        height: 600px;
+        background: rgba(255, 255, 255, 0.4); 
+        border-radius: 50%;
+        bottom: -200px; 
+        right: -150px;
+        z-index: 1;
+        filter: blur(40px);
+    }
+
+    /* --- TYPOGRAPHY --- */
+    .hero-title { 
+        position: relative; 
+        z-index: 2; 
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-title h1 { 
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.8rem; 
+        font-weight: 600; 
+        color: var(--dark);
+        margin: 0 0 25px 0;
+        line-height: 1.2;
+    }
+    
+    .hero-title .badge { 
+        background: var(--primary); 
+        color: white;
+        padding: 8px 24px; 
+        border-radius: 30px; 
+        text-transform: uppercase; 
+        font-size: 0.8rem; 
+        font-weight: 600; 
+        letter-spacing: 1.5px;
+        display: inline-block;
+        box-shadow: 0 10px 20px rgba(243, 146, 33, 0.2);
+        margin-bottom: 80px; 
+    }
+
+    /* --- BOOK STRUCTURE --- */
+    .table-surface { 
+        background: var(--bg-surface); 
+        padding: 0 20px 100px 20px; 
+        display: flex; 
         justify-content: center;
         position: relative;
     }
-    .hero-title { position: relative; z-index: 2; color: white; text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-    .hero-title h1 { font-family: 'Montserrat'; font-size: 3rem; margin-bottom: 10px; }
-    .hero-title .badge { background: var(--green); padding: 5px 15px; border-radius: 20px; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
+    
+    .book { 
+        display: flex; 
+        width: 100%; 
+        max-width: 1150px; 
+        background: var(--paper); 
+        box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.02); 
+        border-radius: 12px; 
+        overflow: hidden;
+        margin-top: -120px; 
+        z-index: 10;
+        position: relative;
+    }
 
-    /* --- BOOK --- */
-    .table-surface { padding: 60px 20px; background: #cbd5e1; min-height: 100vh; display: flex; justify-content: center; }
-    .book { display: flex; width: 100%; max-width: 1100px; background: var(--paper); box-shadow: 0 20px 50px rgba(0,0,0,0.3), inset 0 0 0 1px #e5e5e5; border-radius: 6px; overflow: hidden; }
+    .book::before {
+        content: '';
+        position: absolute;
+        top: 0; bottom: 0; left: 50%;
+        width: 60px;
+        transform: translateX(-50%);
+        background: linear-gradient(to right, rgba(0,0,0,0.02), rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.02));
+        z-index: 20;
+        pointer-events: none;
+    }
 
     /* PAGES */
     .page { flex: 1; padding: 60px; position: relative; }
-    .page-left { border-right: 1px solid #eee; }
+    .page-left { border-right: 1px solid rgba(0,0,0,0.06); }
     
-    .handwritten-note { font-family: 'Caveat', cursive; color: var(--primary); font-size: 1.5rem; transform: rotate(-2deg); margin-bottom: 15px; display: block; }
-    h2 { font-family: 'Montserrat'; font-size: 1.8rem; color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
+    .handwritten-note { 
+        font-family: 'Caveat', cursive; 
+        color: var(--primary); 
+        font-size: 1.6rem; 
+        transform: rotate(-2deg); 
+        margin-bottom: 20px; 
+        display: block; 
+    }
+    
+    h2 { font-family: 'Montserrat'; font-size: 2rem; color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
     h3 { font-family: 'Montserrat'; font-size: 1.1rem; color: var(--dark); margin-top: 25px; margin-bottom: 10px; }
-    p { margin-bottom: 15px; line-height: 1.7; color: #4b5563; font-size: 0.95rem; }
+    p { margin-bottom: 18px; line-height: 1.7; color: #475569; font-size: 1rem; }
 
-    .winner-box { background: #fff8e1; border: 2px dashed var(--primary); padding: 25px 20px 20px 20px; border-radius: 8px; margin: 25px 0; position: relative; }
-    .winner-box::after { content: '🏆'; font-size: 2rem; position: absolute; top: -22px; right: 15px; background: #fff8e1; padding: 0 10px; transform: rotate(10deg); }
+    /* Winner Box */
+    .winner-box { 
+        background: #fff7ed; 
+        border: 2px dashed var(--primary);
+        padding: 25px 20px 20px 20px; 
+        border-radius: 8px; 
+        margin: 25px 0; 
+        position: relative; 
+    }
+    .winner-box::after { 
+        content: '🏆'; font-size: 2rem; position: absolute; 
+        top: -22px; right: 15px; background: #fff7ed; 
+        padding: 0 10px; transform: rotate(10deg); 
+    }
     .winner-title { color: var(--dark); font-weight: 700; font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 5px; }
 
-    .eit-stamp { border: 3px double var(--green); color: var(--green); display: inline-block; padding: 5px 15px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; transform: rotate(-3deg); margin-top: 15px; border-radius: 4px; opacity: 0.9; }
-    .checklist { list-style: none; margin-bottom: 20px; }
-    .checklist li { margin-bottom: 8px; padding-left: 25px; position: relative; font-size: 0.9rem; color: #4b5563; }
-    .checklist li::before { content: '✓'; color: var(--green); position: absolute; left: 0; font-weight: bold; }
+    .eit-stamp { 
+        border: 3px double var(--primary); color: var(--primary); 
+        display: inline-block; padding: 5px 15px; 
+        font-weight: 700; text-transform: uppercase; font-size: 0.8rem; 
+        transform: rotate(-3deg); margin-top: 15px; border-radius: 4px; opacity: 0.9; 
+    }
     
-    .social-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; color: #0077b5; font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+    .checklist { list-style: none; margin-bottom: 20px; }
+    .checklist li { margin-bottom: 8px; padding-left: 25px; position: relative; font-size: 0.95rem; color: #475569; }
+    .checklist li::before { content: '✓'; color: var(--primary); position: absolute; left: 0; font-weight: bold; }
+    
+    .social-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; color: #0077b5; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition:0.2s; }
+    .social-link:hover { text-decoration: underline; }
+    
     .btn-back { display: inline-block; margin-top: 30px; color: var(--dark); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--primary); font-size: 0.9rem; }
 
     /* --- RIGHT PAGE: ALBUM --- */
-    .page-right { background: #faf8f5; background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px); background-size: 20px 20px; }
+    .page-right { 
+        background: #faf8f5; 
+        background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+        background-size: 30px 30px; 
+    }
     
-    .album-title { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--dark); margin-bottom: 25px; text-align: center; transform: rotate(-2deg); }
+    .album-title { 
+        font-family: 'Caveat', cursive; font-size: 2.2rem; color: var(--dark); 
+        margin-bottom: 30px; text-align: center; transform: rotate(-2deg); 
+    }
     
     .polaroid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding-bottom: 20px; }
     
-    .polaroid { background: white; padding: 8px 8px 25px 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; transform: rotate(var(--tilt)); }
-    .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 5 !important; }
-    .polaroid img { width: 100%; height: 110px; object-fit: cover; border: 1px solid #eee; }
-    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 0.9rem; text-align: center; margin-top: 5px; color: #64748b; }
+    .polaroid { 
+        background: white; padding: 10px 10px 35px 10px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+        transition: transform 0.3s; transform: rotate(var(--tilt)); 
+    }
+    .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 30 !important; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    
+    /* OPTIMIZED IMAGE: Lazy Load */
+    .polaroid img { width: 100%; height: 160px; object-fit: cover; border: 1px solid #eee; }
+    
+    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 1.1rem; text-align: center; margin-top: 8px; color: #64748b; }
 
     @media (max-width: 900px) {
-        .book { flex-direction: column; }
+        .hero-header { height: auto; padding: 100px 20px 60px 20px; }
+        .book { flex-direction: column; margin-top: 0; }
+        .book::before { display: none; }
         .page-left { border-right: none; border-bottom: 1px dashed #ccc; padding: 40px 25px; }
         .page-right { padding: 40px 25px; }
-        .hero-header { height: 40vh; }
+        .hero-title h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="assets/mainlogo.png" alt="Kimitisik Logo">
+      </a>
+
+      <nav class="nav-menu">
+        <div class="mobile-menu-header">
+           <div></div> 
+           <span class="close-menu">&times;</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li class="dropdown">
+            <span class="nav-item dropdown-toggle">Solutions ▾</span>
+            <ul class="dropdown-menu">
+              <li><a href="solutions-universities.html">For Universities</a></li>
+              <li><a href="solutions-business.html">For Business</a></li>
+              <li><a href="solutions-public.html">Public Sector</a></li>
+            </ul>
+          </li>
+          <li><a href="events.html" class="nav-item active">Events</a></li>
+          <li><a href="about.html" class="nav-item">About Us</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+          <li class="mobile-cta-item">
+            <a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary full-width">Book Discovery Call</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary-header">Book Discovery Call</a>
+        <div class="hamburger">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-overlay"></div>
+  </header>
+
+  <div class="page-spacer"></div>
+
   <header class="hero-header">
     <div class="hero-title">
-      <span class="badge">EIT Urban Mobility</span>
       <h1>Budapest Summer School</h1>
+      <span class="badge">Student Innovation Camp</span>
     </div>
   </header>
 
@@ -112,8 +298,9 @@
 
         <div class="eit-stamp">Co-funded by EIT Urban Mobility</div>
         <br>
+
         <a href="https://www.linkedin.com/feed/update/urn:li:activity:7356582670547476480/" target="_blank" class="social-link">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H3.36V13.394h1.583zM3.97 5.937c.596 0 1.025-.451 1.025-1.02 0-.58-.43-1.02-1.025-1.02-.595 0-1.024.44-1.024 1.02 0 .569.43 1.02 1.024 1.02zM13.394 13.394V8.59c0-2.535-1.354-3.72-3.174-3.72-1.462 0-2.115.803-2.48 1.347h-.025V6.169h-1.582c.02.447 0 7.225 0 7.225h1.582V9.364c0-.216.015-.432.078-.586.173-.432.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.86h1.582z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right:5px;"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H3.36V13.394h1.583zM3.97 5.937c.596 0 1.025-.451 1.025-1.02 0-.58-.43-1.02-1.025-1.02-.595 0-1.024.44-1.024 1.02 0 .569.43 1.02 1.024 1.02zM13.394 13.394V8.59c0-2.535-1.354-3.72-3.174-3.72-1.462 0-2.115.803-2.48 1.347h-.025V6.169h-1.582c.02.447 0 7.225 0 7.225h1.582V9.364c0-.216.015-.432.078-.586.173-.432.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.86h1.582z"/></svg>
             See full highlights on LinkedIn
         </a>
         <br>
@@ -123,35 +310,35 @@
       <div class="page page-right">
         <div class="album-title">Summer Memories</div>
         <div class="polaroid-grid">
+
+           <div class="polaroid" style="--tilt: 3deg;">
+            <img src="assets/Budapest2.jpeg" alt="Budapest Trams" loading="lazy" decoding="async">
+            <div class="polaroid-caption">Sharing Visions</div>
+          </div>
           
           <div class="polaroid" style="--tilt: -2deg;">
-            <img src="assets/project3.jpeg" alt="Team Presentation">
+            <img src="assets/Budapest1.jpeg" alt="Team Presentation" loading="lazy" decoding="async">
             <div class="polaroid-caption">The Pitch Finals</div>
           </div>
           
-          <div class="polaroid" style="--tilt: 3deg;">
-            <img src="https://images.unsplash.com/photo-1517737812598-1a43d0ef2a60?auto=format&fit=crop&q=80&w=600" alt="Budapest Trams">
-            <div class="polaroid-caption">Budapest Trams</div>
-          </div>
-
           <div class="polaroid" style="--tilt: -1deg;">
-            <img src="assets/project1.jpeg" alt="Students Working">
+            <img src="assets/Budapest3.jpeg" alt="Students Working" loading="lazy" decoding="async">
             <div class="polaroid-caption">Ideation Phase</div>
           </div>
 
           <div class="polaroid" style="--tilt: 4deg;">
-            <img src="https://images.unsplash.com/photo-1565426873118-a17ed65d7429?auto=format&fit=crop&q=80&w=600" alt="BME University">
+            <img src="assets/Budapest4.jpg" alt="BME University" loading="lazy" decoding="async">
             <div class="polaroid-caption">Hosted at BME</div>
           </div>
 
           <div class="polaroid" style="--tilt: -3deg;">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=600" alt="Workshops">
+            <img src="assets/Budapest5.jpeg" alt="Workshops" loading="lazy" decoding="async">
             <div class="polaroid-caption">Workshops</div>
           </div>
 
           <div class="polaroid" style="--tilt: 2deg;">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=600" alt="Awards">
-            <div class="polaroid-caption">Winners</div>
+            <img src="assets/Budapest6.jpeg" alt="Awards" loading="lazy" decoding="async">
+            <div class="polaroid-caption">Budapest Squad</div>
           </div>
 
         </div>
@@ -159,6 +346,8 @@
 
     </div>
   </section>
+
+  <script src="js/script.js"></script>
 
 </body>
 </html>

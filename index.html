@@ -10,6 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="css/styles.css">
+  
+  <link rel="preload" as="image" href="assets/hero.jpg">
+
+  <style>
+    /* Inline Critical CSS for Hero Image to prevent flash of unstyled content */
+    .hero-bg-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+    /* Ensure hero content sits on top */
+    .hero-overlay, .hero-content {
+        z-index: 1;
+    }
+    .hero-content { z-index: 2; }
+  </style>
 </head>
 
 <body>
@@ -17,7 +36,7 @@
   <header class="header">
     <div class="container header-container">
       <a href="index.html" class="logo">
-        <img src="assets/mainlogo.png" alt="Kimitisik Logo">
+        <img src="assets/mainlogo.png" alt="Kimitisik Logo" width="150" height="32">
       </a>
 
       <nav class="nav-menu">
@@ -59,7 +78,8 @@
   </header>
 
   <section class="hero">
-    <div class="hero-bg"></div>
+    <img src="assets/hero.jpg" alt="Innovation Workshop" class="hero-bg-img" fetchpriority="high">
+    
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <span class="badge-pill">Innovation & Education</span>
@@ -78,26 +98,21 @@
             <div class="slider-wrapper">
                 <div class="slider">
                     <div class="slide-track">
-                        <div class="slide"><img src="assets/logos/1.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/2.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/3.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/4.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/5.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/6.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/7.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/8.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/9.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/10.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/1.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/2.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/3.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/4.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/5.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/6.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/7.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/8.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/9.png" alt="Partner"></div>
-                        <div class="slide"><img src="assets/logos/10.png" alt="Partner"></div>
+                        <div class="slide"><img src="assets/logos/1.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/2.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/3.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/4.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/5.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/6.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/7.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/8.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/9.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/10.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/1.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/2.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/3.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/4.png" alt="Partner" loading="lazy" width="130" height="55"></div>
+                        <div class="slide"><img src="assets/logos/5.png" alt="Partner" loading="lazy" width="130" height="55"></div>
                     </div>
                 </div>
             </div>
@@ -174,33 +189,28 @@
         </button>
 
         <button class="sol-nav-btn" data-target="researchers">
-  <div class="sol-icon-box bg-grey-soft">
-    <svg class="sol-icon" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20 19V17H15.5C15.57 16.65 15.79 16.36 16.09 16.14C16.39 15.93 16.73 15.82 17.08 15.73C18.66 15.35 19.34 13.5 19.34 13.5L16.2 9.5H16.22C16.11 8.87 15.81 8.3 15.37 7.85C14.7 7.18 13.75 6.8 12.8 6.8V6.8H12V3H13V1H10V3H11V6.8C9.5 6.8 8.1 7.6 7.4 9H7.66L4.5 13.5C4.5 13.5 5.14 15.34 6.72 15.72C7.5 15.91 8.1 16.6 8.1 17.5V19H4V21H20V19Z"/>
-    </svg>
-  </div>
-  <div class="sol-nav-text">
-    <strong>Researchers & Faculty</strong>
-    <span>Coaching & Impact</span>
-  </div>
-</button>
+          <div class="sol-icon-box bg-grey-soft">
+            <svg class="sol-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 19V17H15.5C15.57 16.65 15.79 16.36 16.09 16.14C16.39 15.93 16.73 15.82 17.08 15.73C18.66 15.35 19.34 13.5 19.34 13.5L16.2 9.5H16.22C16.11 8.87 15.81 8.3 15.37 7.85C14.7 7.18 13.75 6.8 12.8 6.8V6.8H12V3H13V1H10V3H11V6.8C9.5 6.8 8.1 7.6 7.4 9H7.66L4.5 13.5C4.5 13.5 5.14 15.34 6.72 15.72C7.5 15.91 8.1 16.6 8.1 17.5V19H4V21H20V19Z"/>
+            </svg>
+          </div>
+          <div class="sol-nav-text">
+            <strong>Researchers & Faculty</strong>
+            <span>Coaching & Impact</span>
+          </div>
+        </button>
 
-<button class="sol-nav-btn" data-target="learners">
-  <div class="sol-icon-box bg-blue-soft">
-    <svg class="sol-icon" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-    </svg>
-  </div>
-  <div class="sol-nav-text">
-    <strong>Learners</strong>
-    <span>Summer Schools</span>
-  </div>
-</button>
-
-
-
-
-
+        <button class="sol-nav-btn" data-target="learners">
+          <div class="sol-icon-box bg-blue-soft">
+            <svg class="sol-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+          </div>
+          <div class="sol-nav-text">
+            <strong>Learners</strong>
+            <span>Summer Schools</span>
+          </div>
+        </button>
       </div>
 
       <div class="solutions-content">
@@ -317,7 +327,7 @@
               <p>Build an entrepreneurial mindset with emotional balance.</p>
             </div>
           </div>
-          <a href="contact.html" class="sol-primary-cta">Apply for a 2025 Summer School &rarr;</a>
+          <a href="contact.html" class="sol-primary-cta">Innovate with us &rarr;</a>
         </div>
       </div>
     </div>
@@ -346,7 +356,7 @@
       </div>
 
       <div class="split-image-wrapper">
-        <img src="assets/workshop1.jpeg" alt="Workshop in action" class="rounded-shadow-img">
+        <img src="assets/workshop1.jpeg" alt="Workshop in action" class="rounded-shadow-img" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -430,23 +440,43 @@
 
       <div class="carousel-track" id="projectTrack">
         
-        <div class="project-slide">
-          <img src="assets/project1.jpeg" alt="Project 1">
+          <div class="project-slide">
+          <img src="assets/project1.jpeg" alt="ISM Bootcamp" loading="lazy">
           <div class="slide-content">
-            <h4>Case Study: Improving Entrepreneurial Health Ecosystems</h4>
-            <p class="partners-text">Partners: TU Delft, EIT Health</p>
-            <a href="#" class="learn-more-link">Learn More →</a>
+            <h4>Case Study: ISM Entrepreneurship Boot Camp</h4>
+            <p class="partners-text">Partners: ISM University of Management and Economics</p>
+            <a href="program-ism.html" class="learn-more-link">Learn More →</a>
           </div>
         </div>
 
         <div class="project-slide">
-          <img src="assets/project2.jpeg" alt="Project 2">
+          <img src="assets/YWE5.jpg" alt="YWE Tour" loading="lazy">
           <div class="slide-content">
-            <h4>Case Study: Urban Mobility Innovation</h4>
-            <p class="partners-text">Partners: Riga Tech University</p>
-            <a href="#" class="learn-more-link">Learn More →</a>
+            <h4>Case Study: Young Women Entrepreneurs Tour</h4>
+            <p class="partners-text">Partners: EJMSZ (Future Female Engineers)</p>
+            <a href="program-ywe.html" class="learn-more-link">Learn More →</a>
           </div>
         </div>
+
+        <div class="project-slide">
+          <img src="assets/workshop2.jpeg" alt="Disruptor Bootcamp" loading="lazy">
+          <div class="slide-content">
+            <h4>Case Study: EIT Disruptor Bootcamp</h4>
+            <p class="partners-text">Partners: EIT Urban Mobility</p>
+            <a href="program-disruptor.html" class="learn-more-link">Learn More →</a>
+          </div>
+        </div>
+
+        <div class="project-slide">
+          <img src="assets/BudapestHero.jpeg" alt="Budapest Summer School" loading="lazy">
+          <div class="slide-content">
+            <h4>Case Study: Budapest Innovation School</h4>
+            <p class="partners-text">Partners: BME, EIT Urban Mobility</p>
+            <a href="program-budapest.html" class="learn-more-link">Learn More →</a>
+          </div>
+        </div>
+
+      
 
       </div>
     </div>
@@ -456,8 +486,6 @@
     </div>
   </div>
 </section>
-
-
 
   <section class="final-cta-section">
     <div class="container footer-cta">

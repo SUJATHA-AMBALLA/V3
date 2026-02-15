@@ -10,9 +10,25 @@
   
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/contact.css">
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </head>
 
 <body>
+
+  <div id="successModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="animation-wrapper">
+        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_hzfmxrr7.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+      </div>
+      <h2>Message Sent!</h2>
+      <p>Thanks. We will reach you soon.<br>You can write to <strong>hi@kimitisik.eu</strong> for any queries meanwhile.</p>
+      <button class="btn-close-modal" onclick="closeModal()">Close</button>
+    </div>
+  </div>
 
   <header class="header">
     <div class="container header-container">
@@ -98,7 +114,7 @@
         </div>
 
         <div class="contact-form-panel">
-          <form action="https://formspree.io/f/xoqgjgjr" method="POST">
+            <form id="contactForm">
             
             <div class="form-row">
               <div class="input-group">
@@ -137,8 +153,9 @@
               <span class="highlight"></span>
             </div>
 
-            <button type="submit" class="btn-submit">
-              Send Message <span class="arrow">→</span>
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span id="btnText">Send Message</span> 
+              <span class="arrow" id="btnArrow">→</span>
             </button>
           </form>
         </div>
@@ -170,18 +187,6 @@
           <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <a href="mailto:hi@kimitisik.eu">hi@kimitisik.eu</a>
         </div>
-        <div class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-          <a href="contact.html">Send us a message</a>
-        </div>
-        <div class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-          <span>Netherlands - Lithuania - India</span>
-        </div>
-        <div class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-          <span>Chamber of Commerce: 80416454</span>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -196,31 +201,70 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    // Mobile Menu Logic
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-    const closeMenu = document.querySelector(".close-menu");
-    const menuOverlay = document.querySelector(".menu-overlay");
+  
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    if(hamburger) {
-        hamburger.addEventListener("click", () => {
-            navMenu.classList.add("active");
-            menuOverlay.classList.add("active");
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // NOTE: We do not need emailjs.init() here anymore.
+    // We will pass the key directly in the send function below.
+
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.querySelector('.btn-submit');
+    const btnText = submitBtn.querySelector('span:first-child'); 
+    const modal = document.getElementById('successModal');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            // 1. UI: Change button to "Sending..."
+            const originalText = btnText.innerText;
+            btnText.innerText = 'Sending...';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+
+            // 2. DATA: Gather form fields
+            const templateParams = {
+                name: document.getElementById('name').value,
+                organization: document.getElementById('organization').value,
+                email: document.getElementById('email').value,
+                interest: document.getElementById('interest').value,
+                message: document.getElementById('message').value
+            };
+
+            // 3. SEND: Using the Explicit Public Key method
+            // Format: emailjs.send(SERVICE_ID, TEMPLATE_ID, PARAMS, PUBLIC_KEY)
+            emailjs.send('service_kf22bk1', 'template_d4kferm', templateParams, 'g6lTvikeEF6i7ly7i')
+                .then(function() {
+                    // SUCCESS
+                    modal.classList.add('active');
+                    contactForm.reset();
+                    btnText.innerText = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                }, function(error) {
+                    // FAILURE
+                    // Log the EXACT error to the console so we can see why it failed
+                    console.error('FAILED...', error);
+                    alert('Error: ' + JSON.stringify(error)); // This will show the real reason on screen
+                    
+                    btnText.innerText = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                });
         });
     }
-    if(closeMenu) {
-        closeMenu.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            menuOverlay.classList.remove("active");
-        });
+
+    function closeModal() {
+        modal.classList.remove('active');
     }
-    if(menuOverlay) {
-        menuOverlay.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            menuOverlay.classList.remove("active");
-        });
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
     }
-  </script>
+</script>
 </body>
 </html>

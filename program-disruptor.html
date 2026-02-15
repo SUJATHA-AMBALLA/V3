@@ -4,47 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disruptor Bootcamp Recap | Kimitisik</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
   <style>
     :root { 
         --primary: #f39221; 
         --primary-light: #fff7ed;
-        --blue: #2563eb; 
-        --blue-light: #eff6ff;
-        --dark: #14213d; 
+        --dark: #334155; 
         --paper: #fdfbf7; 
+        --bg-surface: #f3f4f6;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #e2e8f0; color: #333; overflow-x: hidden; }
 
-    /* --- HERO --- */
+    .header .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+    /* HERO */
     .hero-header {
-        height: 50vh;
-        background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.5)), url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=1600'); 
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+        height: 65vh; 
+        background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+        display: flex; flex-direction: column; align-items: center;
+        padding-top: 100px; position: relative; overflow: hidden; text-align: center;
     }
-    .hero-title { position: relative; z-index: 2; color: white; text-align: center; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-    .hero-title h1 { font-family: 'Montserrat'; font-size: 3rem; margin-bottom: 5px; letter-spacing: -1px; }
-    .hero-title .subtitle { font-family: 'Inter', sans-serif; font-size: 1rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+    .hero-header::before {
+        content: ''; position: absolute; width: 500px; height: 500px;
+        background: rgba(243, 146, 33, 0.05); border-radius: 50%;
+        top: -200px; left: -100px;
+    }
+    .hero-header::after {
+        content: ''; position: absolute; width: 600px; height: 600px;
+        background: rgba(255, 255, 255, 0.4); border-radius: 50%;
+        bottom: -200px; right: -150px; filter: blur(40px);
+    }
 
-    /* --- BOOK CONTAINER --- */
-    .table-surface { padding: 60px 20px; background: #cbd5e1; min-height: 100vh; display: flex; justify-content: center; }
-    .book { display: flex; width: 100%; max-width: 1100px; background: var(--paper); box-shadow: 0 20px 50px rgba(0,0,0,0.3), inset 0 0 0 1px #e5e5e5; border-radius: 6px; overflow: hidden; }
+    /* TYPOGRAPHY */
+    .hero-title { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+    .hero-title h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; font-weight: 600; color: var(--dark); margin: 0 0 25px 0; line-height: 1.2; }
+    .hero-title .badge { 
+        background: var(--primary); color: white; padding: 8px 24px; border-radius: 30px; 
+        text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px;
+        display: inline-block; box-shadow: 0 10px 20px rgba(243, 146, 33, 0.2); margin-bottom: 80px; 
+    }
+
+    /* BOOK */
+    .table-surface { background: var(--bg-surface); padding: 0 20px 100px 20px; display: flex; justify-content: center; position: relative; }
+    .book { 
+        display: flex; width: 100%; max-width: 1150px; background: var(--paper); 
+        box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.02); 
+        border-radius: 12px; overflow: hidden; margin-top: -120px; z-index: 10; position: relative;
+    }
+    .book::before {
+        content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 60px; transform: translateX(-50%);
+        background: linear-gradient(to right, rgba(0,0,0,0.02), rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.02));
+        z-index: 20; pointer-events: none;
+    }
 
     /* PAGES */
-    .page { flex: 1; padding: 50px; position: relative; }
-    .page-left { border-right: 1px solid #eee; }
-    
-    h2 { font-family: 'Montserrat'; font-size: 1.6rem; color: var(--dark); margin-bottom: 10px; }
-    .date-stamp { color: var(--blue); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: block; }
-    p { margin-bottom: 18px; line-height: 1.6; color: #4b5563; font-size: 0.95rem; }
+    .page { flex: 1; padding: 60px; position: relative; }
+    .page-left { border-right: 1px solid rgba(0,0,0,0.06); }
+    .handwritten-note { font-family: 'Caveat', cursive; color: var(--primary); font-size: 1.6rem; transform: rotate(-2deg); margin-bottom: 20px; display: block; }
+    h2 { font-family: 'Montserrat'; font-size: 2rem; color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
+    p { margin-bottom: 18px; line-height: 1.7; color: #475569; font-size: 1rem; }
 
-    .findings-box { background: var(--blue-light); border-left: 4px solid var(--blue); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
+    .findings-box { background: var(--primary-light); border-left: 4px solid var(--primary); padding: 20px; border-radius: 0 8px 8px 0; margin: 25px 0; }
     .findings-title { font-family: 'Montserrat'; font-weight: 700; color: var(--dark); font-size: 0.9rem; margin-bottom: 10px; display: block; }
     .findings-list { list-style: none; }
     .findings-list li { margin-bottom: 8px; font-size: 0.9rem; color: #334155; position: relative; padding-left: 20px; }
@@ -53,54 +76,73 @@
     .stats-badge { display: inline-block; border: 2px solid var(--dark); color: var(--dark); padding: 5px 15px; font-weight: 700; border-radius: 50px; font-size: 0.8rem; margin-top: 10px; }
     .btn-back { display: inline-block; margin-top: 30px; color: var(--dark); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--primary); font-size: 0.9rem; }
 
-    /* --- RIGHT PAGE: BLUEPRINT GRID --- */
-    .page-right { background: #faf8f5; background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px); background-size: 20px 20px; }
-    
-    .album-title { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--dark); margin-bottom: 25px; text-align: center; transform: rotate(-2deg); }
-    
-    /* GRID: 2 Columns, but styled for WIDTH */
-    .polaroid-grid { 
-        display: grid; 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 20px; 
-        padding-bottom: 20px; 
-        align-content: center; 
-        height: 100%; 
+    /* RIGHT PAGE (WIDE 4 IMAGES) */
+    .page-right { 
+        background: #faf8f5; 
+        background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+        background-size: 30px 30px; 
     }
+    .album-title { font-family: 'Caveat', cursive; font-size: 2.2rem; color: var(--dark); margin-bottom: 30px; text-align: center; transform: rotate(-2deg); }
     
+    /* WIDE GRID */
+    .polaroid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding-bottom: 20px; }
     .polaroid { 
-        background: white; 
-        padding: 10px 10px 35px 10px; /* Standard polaroid padding */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-        transition: transform 0.3s; 
-        transform: rotate(var(--tilt)); 
-        width: 100%; /* Ensure it fills the grid cell */
+        background: white; padding: 10px 10px 35px 10px; width: 100%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s; transform: rotate(var(--tilt)); 
     }
-    .polaroid:hover { transform: scale(1.05) !important; z-index: 20 !important; }
+    .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 30 !important; }
     
-    /* WIDE LANDSCAPE IMAGE */
-    .polaroid img { 
-        width: 100%; 
-        height: 170px; /* Reduced height to create "Wide" look */
-        object-fit: cover; 
-    }
+    /* OPTIMIZED WIDE IMAGES */
+    .polaroid img { width: 100%; height: 180px; object-fit: cover; border: 1px solid #eee; }
     
-    .polaroid-caption { font-family: 'Caveat', cursive; text-align: center; margin-top: 10px; color: #64748b; font-size: 1.1rem; }
+    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 1.1rem; text-align: center; margin-top: 8px; color: #64748b; }
 
     @media (max-width: 900px) {
-        .book { flex-direction: column; }
+        .hero-header { height: auto; padding: 100px 20px 60px 20px; }
+        .book { flex-direction: column; margin-top: 0; }
+        .book::before { display: none; }
         .page-left { border-right: none; border-bottom: 1px dashed #ccc; padding: 40px 25px; }
-        .page-right { padding: 40px 25px; min-height: 600px; }
-        .hero-header { height: 40vh; }
+        .page-right { padding: 40px 25px; }
+        .hero-title h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo"><img src="assets/mainlogo.png" alt="Kimitisik Logo"></a>
+      <nav class="nav-menu">
+        <div class="mobile-menu-header"><div></div><span class="close-menu">&times;</span></div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li class="dropdown"><span class="nav-item dropdown-toggle">Solutions ▾</span>
+            <ul class="dropdown-menu">
+              <li><a href="solutions-universities.html">For Universities</a></li>
+              <li><a href="solutions-business.html">For Business</a></li>
+              <li><a href="solutions-public.html">Public Sector</a></li>
+            </ul>
+          </li>
+          <li><a href="events.html" class="nav-item active">Events</a></li>
+          <li><a href="about.html" class="nav-item">About Us</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+          <li class="mobile-cta-item"><a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary full-width">Book Discovery Call</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="https://calendly.com/adishwar-kimitisik/30min" class="btn btn-primary-header">Book Discovery Call</a>
+        <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+      </div>
+    </div>
+    <div class="menu-overlay"></div>
+  </header>
+
+  <div class="page-spacer"></div>
+
   <header class="hero-header">
     <div class="hero-title">
       <h1>From Research to Impact</h1>
-      <span class="subtitle">EIT Urban Mobility Disruptor</span>
+      <span class="badge">EIT Urban Mobility Disruptor</span>
     </div>
   </header>
 
@@ -108,7 +150,7 @@
     <div class="book">
       
       <div class="page page-left">
-        <span class="date-stamp">June 10 • Online Roadshow</span>
+        <span class="handwritten-note">June 10 • Online Roadshow</span>
         <h2>The Science of Entrepreneurship</h2>
         
         <p>This follow-up session further empowered researchers to explore how to turn their scientific work into real-world entrepreneurial impact — and inspired many to take their first steps from lab to market.</p>
@@ -126,7 +168,6 @@
         </div>
 
         <div class="stats-badge">37 Innovators Participated 🚀</div>
-
         <br>
         <a href="events.html" class="btn-back">← Back to Events</a>
       </div>
@@ -135,46 +176,24 @@
         <div class="album-title">Disruptor Album</div>
         <div class="polaroid-grid">
             
-            <!-- <div class="polaroid" style="--tilt: -2deg;">
-                <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=600" alt="Speaker">
-                <div class="polaroid-caption">Expert Presentation</div>
-            </div>
-
-            <div class="polaroid" style="--tilt: 2deg;">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=600" alt="Focus">
-                <div class="polaroid-caption">Deep Dive</div>
-            </div>
-
-            <div class="polaroid" style="--tilt: 1deg;">
-                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=600" alt="Collaboration">
-                <div class="polaroid-caption">Collaboration</div>
-            </div>
-
-             <div class="polaroid" style="--tilt: -3deg;">
-                 <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=600" alt="Brainstorm">
-                <div class="polaroid-caption">Brainstorm Session</div>
-            </div> -->
-
             <div class="polaroid" style="--tilt: -2deg;">
-                <img src="assets/Dis1.jpg" alt="Speaker">
+                <img src="assets/Dis1.jpg" alt="Expert Presentation" loading="lazy" decoding="async">
                 <div class="polaroid-caption">Expert Presentation</div>
             </div>
 
-            
-
-            <div class="polaroid" style="--tilt: 1deg;">
-                <img src="assets/Dis5.png" alt="Collaboration">
-                <div class="polaroid-caption">Collaboration</div>
+              <div class="polaroid" style="--tilt: -3deg;">
+                 <img src="assets/Dis5.jpg" alt="Brainstorm Session" loading="lazy" decoding="async">
+                <div class="polaroid-caption">Brainstorm Session</div>
             </div>
-
+            
             <div class="polaroid" style="--tilt: 2deg;">
-                <img src="assets/Dis3.png" alt="Focus">
+                <img src="assets/Dis3.png" alt="Deep Dive" loading="lazy" decoding="async">
                 <div class="polaroid-caption">Deep Dive</div>
             </div>
 
-             <div class="polaroid" style="--tilt: -3deg;">
-                 <img src="assets/Dis4.png" alt="Brainstorm">
-                <div class="polaroid-caption">Brainstorm Session</div>
+            <div class="polaroid" style="--tilt: 1deg;">
+                <img src="assets/Dis4.png" alt="Collaboration" loading="lazy" decoding="async">
+                <div class="polaroid-caption">Collaboration</div>
             </div>
 
         </div>
@@ -183,5 +202,6 @@
     </div>
   </section>
 
+  <script src="js/script.js"></script>
 </body>
 </html>
