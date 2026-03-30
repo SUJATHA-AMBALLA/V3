@@ -163,6 +163,25 @@
     height: 18px;
 }
 
+/* --- PROFILE LOCATIONS --- */
+.profile-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+    margin-top: 5px;
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.profile-location svg {
+    border: 1px solid #cbd5e1;
+    border-radius: 2px;
+}
 /* --- 4. CULTURAL NOTE (Footer Style) --- */
 .culture-note-section {
     padding: 40px 0;
@@ -196,4 +215,102 @@
     }
     
     .about-hero h1 { font-size: 2.5rem; }
+}
+/* --- HERO MISSION UPDATES --- */
+.mission-statement {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin-bottom: 20px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-subtext {
+    font-size: 1.15rem !important;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- CO-CO-NUT SECTION --- */
+.coconut-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.coconut-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
+}
+
+.coconut-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.coconut-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.coconut-card h3 {
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.coconut-card p {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+
+
+/* --- BALANCED TEAM CREDENTIALS --- */
+.team-credentials {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.team-credentials strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--dark);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.team-credentials ul {
+    font-size: 0.85rem;
+    padding-left: 20px;
+    margin: 0;
+    color: #4b5563;
+}
+
+.team-credentials li {
+    margin-bottom: 6px;
+}
+
+.team-credentials a {
+    color: #0077b5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.team-credentials a:hover {
+    text-decoration: underline;
 }

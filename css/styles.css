@@ -949,6 +949,22 @@
   color: var(--dark);
 }
 
+
+.slide-corner-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 40px; 
+    width: auto;
+    max-width: 150px; /* Prevents the logo from getting too wide */
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    padding: 5px 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    object-fit: contain; /* Ensures the image scales down correctly within its box */
+}
+
 .prev { left: 20px; }
 .next { right: 20px; }
 
@@ -989,11 +1005,22 @@
   .footer-cta p { color: var(--text-light); margin-bottom: 30px; font-size: 1rem; }
   
   
-  /* =========================================
+ /* =========================================
      11. FOOTER (Dark)
      ========================================= */
   .unified-footer { background-color: var(--dark); color: white; padding-top: 60px; }
-  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.3fr; gap: 40px; padding-bottom: 40px; }
+  
+  .footer-grid { 
+      display: flex; 
+      justify-content: space-between; /* Pushes the columns to opposite ends */
+      gap: 40px; 
+      padding-bottom: 40px; 
+  }
+  
+  .footer-col {
+      max-width: 450px; /* Prevents the left text from stretching too wide */
+  }
+
   .footer-col h4 { 
       font-size: 1rem; margin-bottom: 20px; color: var(--primary); 
       text-transform: uppercase; letter-spacing: 1.2px; font-weight: 800;
@@ -1056,8 +1083,15 @@
     .slider-btn { width: 35px; height: 35px; font-size: 0.9rem; }
     .prev-btn { left: -10px; }
     .next-btn { right: -10px; }
-  
-    .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+
+    /* Cleaned up Mobile Footer */
+    .footer-grid { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 30px; 
+        align-items: center; 
+    }
+    
     .contact-item { justify-content: center; }
     .bottom-flex { flex-direction: column; gap: 15px; }
   }

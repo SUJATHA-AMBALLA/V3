@@ -1,24 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- Calendar Logic (Keep existing, just updating DOM refs) ---
     const allEvents = document.querySelectorAll('.grid-card');
     const calGrid = document.getElementById('miniCalendarGrid');
     const calLabel = document.getElementById('calMonthYear');
     
-    let today = new Date();
-    let currentMonth = today.getMonth(); 
-    let currentYear = today.getFullYear(); 
+    // Default to July 2026 to show the highlight event immediately
+    let currentMonth = 6; // 0-indexed (July)
+    let currentYear = 2026; 
     
     // --- Filter Logic ---
     const filterBtns = document.querySelectorAll('.filter-btn');
     let currentCategory = 'all';
 
-    // 1. Button Click Handlers
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Add to clicked
             btn.classList.add('active');
             
             currentCategory = btn.getAttribute('data-filter');
@@ -38,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 2. Calendar Logic
+    // --- Calendar Logic ---
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     function renderCalendar(month, year) {
@@ -48,8 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
         let firstDay = new Date(year, month, 1).getDay();
         let daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        // Collect dates
-        let eventDates = [];
+        // Collect dates and manually append the Summer School dates
+        let eventDates = [
+            '2026-07-13', '2026-07-14', '2026-07-15', '2026-07-16', 
+            '2026-07-17', '2026-07-18', '2026-07-19', '2026-07-20', 
+            '2026-07-21', '2026-07-22', '2026-07-23', '2026-07-24'
+        ];
+        
         allEvents.forEach(card => {
             if(card.getAttribute('data-date')) eventDates.push(card.getAttribute('data-date'));
         });

@@ -8,25 +8,16 @@
 /* --- 2. INTRO SECTION (Tightened Up) --- */
 .events-intro {
     text-align: center;
-    /* UPDATED: Drastically reduced padding to pull content up */
     padding: 20px 20px 10px; 
     max-width: 900px;
     margin: 0 auto;
 }
 
 .events-intro h1 {
-    font-size: 2.2rem; /* Slightly smaller for compactness */
+    font-size: 2.2rem; 
     line-height: 1.1;
-    margin-bottom: 8px; /* Minimal gap */
+    margin-bottom: 25px; 
     color: var(--dark);
-}
-
-.events-intro .intro-lead {
-    font-size: 1.05rem;
-    color: #64748b;
-    line-height: 1.4;
-    max-width: 800px;
-    margin: 0 auto 15px; /* Reduced bottom margin */
 }
 
 /* --- 3. TOP DASHBOARD (The Featured Section) --- */
@@ -35,11 +26,10 @@
     grid-template-columns: 2fr 1fr; 
     gap: 25px;
     margin-bottom: 50px;
-    /* UPDATED: Negative margin pulls the whole section UP towards the text */
     margin-top: 10px; 
 }
 
-/* Featured Spotlight (Bali) */
+/* Featured Spotlight */
 .featured-spotlight {
     background-color: #0A2342; /* Dark Navy */
     border-radius: 16px;
@@ -49,13 +39,12 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     min-height: 380px; 
 }
-
 .spotlight-content {
     flex: 1.2; 
     padding: 35px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Changed to allow the footer to push to the bottom */
 }
 
 .spotlight-badge {
@@ -94,11 +83,62 @@
 
 .spotlight-content p {
     color: #cbd5e1;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     line-height: 1.5;
     font-size: 0.95rem;
 }
 
+/* --- New Side-by-Side Button Layout --- */
+.spotlight-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px; /* Space before the logo footer */
+}
+
+
+.spotlight-actions .btn {
+    flex: 1; 
+    text-align: center;
+    padding: 8px 15px; /* Reduced padding for smaller height */
+    font-size: 0.85rem; /* Slightly smaller text */
+    border-radius: 50px; /* Fully circular corners */
+}
+/* New secondary button style for the spotlight */
+.btn.outline-light {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+}
+.btn.outline-light:hover {
+    background: white;
+    color: var(--dark);
+    border-color: white;
+}
+/* Replace your existing footer and logo styles with these */
+
+.spotlight-footer {
+    margin: auto -35px -35px -35px; /* Pulls background to the bottom edges */
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 35px;
+}
+
+.partner-text {
+    font-size: 0.7rem; /* Decreased text size */
+    color: #0A2342; 
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.spotlight-partner-logo {
+    height: 75px; /* Increased logo size */
+    object-fit: contain; 
+}
+
+/* Image stays exactly as it was */
 .spotlight-image {
     flex: 1;
     position: relative;
@@ -181,14 +221,12 @@
     letter-spacing: 1px;
 }
 
-
 /* --- SECTION 3: DIRECTORY --- */
 .directory-header {
     margin-bottom: 30px;
     text-align: left;
 }
 
-/* Filter Pills */
 .filter-bar {
     display: flex;
     gap: 10px;
@@ -222,7 +260,7 @@
 /* --- CARDS GRID --- */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 25px;
     padding-bottom: 80px;
 }
@@ -250,7 +288,6 @@
 }
 .card-img-top img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Date Badge */
 .date-tag {
     position: absolute;
     top: 10px; right: 10px;
@@ -264,17 +301,16 @@
 .d-day { display: block; font-size: 1.1rem; font-weight: 800; color: var(--primary); line-height: 1; }
 .d-month { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
 
-/* UPDATED PAST TAG: Clean Technical Label */
 .past-tag { 
-    background: #f8fafc; /* Very light gray */
-    color: #475569;      /* Slate dark gray */
-    border: 1px solid #cbd5e1; /* Subtle border */
+    background: #f8fafc; 
+    color: #475569;      
+    border: 1px solid #cbd5e1; 
     font-weight: 700; 
     font-size: 0.7rem; 
     padding: 6px 10px; 
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Slight lift */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
 }
 
 .card-body {
@@ -321,10 +357,19 @@
 }
 .btn-card:hover { background: var(--primary-dark); }
 
+.cards-grid .btn-card {
+    display: block;
+    width: fit-content;
+    margin: auto auto 0 auto; 
+    padding: 10px 20px; 
+}
+
 .btn-card.outline {
     background: transparent;
     border: 1px solid #e2e8f0;
     color: var(--text-main);
+    width: auto;
+    margin: auto 0 0 0;
 }
 .btn-card.outline:hover {
     border-color: var(--dark);
@@ -338,11 +383,9 @@
     .spotlight-image { height: 200px; }
     .cards-grid { grid-template-columns: 1fr; }
     .events-intro h1 { font-size: 2.2rem; }
-    
     .daily-spark-card { display: none; } 
 }
 
-/* Fix visibility in the dark navy spotlight */
 .spotlight-content h2 {
     color: #ffffff !important; 
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
